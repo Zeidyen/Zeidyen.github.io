@@ -282,6 +282,26 @@ window.SITE = {
 
     ],
 
+    /* Doctoral thesis, shown under its own heading. */
+    thesis: {
+      title:   "Development of the Modified Extended Chen and Equilibrium " +
+               "Renewal Burr XII Distributions Using the Burr\u2013Hatke " +
+               "Differential Equation",
+      authors: "A. Y. Anafo",
+      venue:   "PhD thesis, University of Mines and Technology, Tarkwa",
+      year:    2022,
+      status:  "thesis",
+      pdf:     "files/papers/anafo-phd-thesis-2022.pdf",
+      note:    "Develops two new univariate continuous distributions from the " +
+               "Burr\u2013Hatke differential equation and the equilibrium " +
+               "renewal process, derives their statistical properties, and " +
+               "compares maximum likelihood against ordinary and weighted least " +
+               "squares by Monte Carlo simulation. Bias and root mean square " +
+               "error fall as the sample size grows, indicating consistent and " +
+               "asymptotically unbiased estimators. Both distributions fit real " +
+               "meteorological and health science data well.",
+    },
+
     /* Ongoing / recently completed projects, shown under their own heading.
        Same fields as papers. */
     ongoing: [
