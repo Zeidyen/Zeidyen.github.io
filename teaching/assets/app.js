@@ -389,10 +389,21 @@
     });
 
     $("rPapers").innerHTML = papers.length
-      ? papers.map(function (p) {
+      ? papers.map(paperCard).join("")
+      : emptyBox("Papers will be listed here.");
+
+    var ong = r.ongoing || [];
+    $("rOngoing").innerHTML = ong.length
+      ? '<h2 class="sec-h">Ongoing research</h2>' + ong.map(paperCard).join("")
+      : "";
+  }
+
+  function paperCard(p) {
+    return (function () {
           var st = String(p.status || "").toLowerCase();
           var cls = st === "published" || st === "accepted" ? "open"
-                  : st === "under review" || st === "preprint" ? "soon" : "tba";
+                  : st === "under review" || st === "preprint" ? "soon"
+                  : st === "completed" ? "soon" : "tba";
           var out = [];
           if (p.pdf) out.push('<a class="file" href="' + esc(p.pdf) + '">' +
                               '<span class="ext">' + esc(extOf(p.pdf)) + "</span>PDF</a>");
@@ -415,8 +426,7 @@
             (p.note ? '<p class="desc">' + esc(p.note) + "</p>" : "") +
             (out.length ? '<div class="files">' + out.join("") + "</div>" : "") +
             "</article>";
-        }).join("")
-      : emptyBox("Papers will be listed here.");
+    }());
   }
 
   /* -------------------------------------------------------------- contact */

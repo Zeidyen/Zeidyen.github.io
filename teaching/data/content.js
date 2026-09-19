@@ -22,7 +22,7 @@ window.SITE = {
     name:        "Dr Abdulzeid Yen Anafo",
     title:       "EDIT ME: your position, e.g. Lecturer in Statistics",
     institution: "University of Mines and Technology, Tarkwa",
-    email:       "abdulzeid@aims.edu.gh",
+    email:       "ayanafo@umat.edu.gh",   // your UMaT address, from your CV
     office:      "EDIT ME: office/building, or delete this line",
     officeHours: "EDIT ME: e.g. Tuesdays 14:00–16:00, or by appointment",
 
@@ -177,50 +177,138 @@ window.SITE = {
 
     interests: [
       "New families of probability distributions",
-      "Maximum likelihood estimation",
+      "Maximum likelihood estimation and regression models",
       "Monte Carlo simulation studies of estimator performance",
-      "Applications to engineering and materials science data",
+      "Applied biostatistics and public health in Ghana",
+      "Survival and competing-risks analysis",
     ],
 
+    // Taken from your CV (ABDULZEID YEN ANAFO_Resume.pdf), newest first.
+    // NOTE: the CV writes your name both as "Anafo, Y. A." and "Anafo, A. Y.".
+    // Normalised to A. Y. Anafo here — correct it if the other is right.
     papers: [
 
-      // Carried over from your old portfolio page. The abstracts are yours;
-      // the co-authors, journal and year were NOT on that page, so fill them in.
       {
-        title:   "The New rT\u2212X Family of Distributions: Some Properties " +
-                 "with Applications",
-        authors: "EDIT ME: full author list, e.g. A. Y. Anafo and C. B. Ampadu",
-        venue:   "EDIT ME: journal name",
-        year:    2019,   // EDIT ME: confirm the year
-        status:  "published",
-        url:     "https://www.researchgate.net/publication/335215281_The_New_r_T_-_X_Family_of_Distributions_Some_Properties_with_Applications",
-        pdf:     "",
-        note:    "Explores the rT\u2212X family induced by V, derives basic " +
-                 "mathematical properties, and shows by simulation that maximum " +
-                 "likelihood estimates the parameters of its sub-models adequately. " +
-                 "The sub-models are applied to materials science engineering data.",
+        title:   "Modified alpha power transformed Topp-Leone family of " +
+                 "distributions with applications and regression",
+        authors: "A. Y. Anafo, S. Ocloo and S. Nasiru",
+        venue:   "Scientific African, vol. 30, e02993",
+        year:    2025, status: "published", url: "", pdf: "",
       },
-
       {
-        title:   "Maximum Likelihood Estimation in an Alpha-Power Transformation " +
-                 "of the Ampadu-Type",
-        authors: "EDIT ME: full author list",
-        venue:   "EDIT ME: journal name",
-        year:    2019,   // EDIT ME: confirm the year
-        status:  "published",
-        url:     "https://www.researchgate.net/publication/333805569_ABBAMSID000541pdf",
-        pdf:     "",
-        note:    "Introduces a new alpha-power transformed family (APTA-F), " +
-                 "derives maximum likelihood estimators for a sub-model, and " +
-                 "confirms by simulation that the method recovers the unknown " +
-                 "parameters well.",
+        title:   "Evaluating malaria burden in children under-five and " +
+                 "intervention outcomes in Tarkwa-Nsuaem municipality",
+        authors: "A. Y. Anafo, S. Bosson-Amedenu, V. U. Gmayinaam, A. Enock, " +
+                 "S. Ocloo and J. Acquah",
+        venue:   "BMC Infectious Diseases, 25(1), 294",
+        year:    2025, status: "published", url: "", pdf: "",
       },
-
-      // Your recent simulation work (the estimator-comparison figures in your
-      // home folder) belongs here once it has a title and a venue.
+      {
+        title:   "Examining Cesarean section rates in Ghana\u2019s 10 regions " +
+                 "over a decade: a comprehensive national investigation",
+        authors: "S. Bosson-Amedenu, A. Y. Anafo, A. Ouerfelli, N. Ouerfelli " +
+                 "and N. Ouerfelli",
+        venue:   "BioMed Research International, 3774435",
+        year:    2024, status: "published", url: "", pdf: "",
+      },
+      {
+        title:   "New weighted Burr XII distribution: statistical properties, " +
+                 "applications and regression",
+        authors: "A. Y. Anafo, S. K. Ocloo and S. Nasiru",
+        venue:   "International Journal of Mathematics and Mathematical Sciences, 4098771",
+        year:    2024, status: "published", url: "", pdf: "",
+        // Your CV lists this paper twice, under two slightly different titles.
+        // Merged into one entry here.
+      },
+      {
+        title:   "Covariate level stratification assessment of mortalities due " +
+                 "to competing risks and breast cancer in Ghana",
+        authors: "J. Acquah, F. Eyiah-Bediako and A. Y. Anafo",
+        venue:   "Scientific African",
+        year:    2024, status: "published", url: "", pdf: "",
+      },
+      {
+        title:   "Logit Gudermannian distribution: properties, regression and " +
+                 "applications",
+        authors: "A. Y. Anafo, O. Selasi and H. M. Napari",
+        venue:   "Journal of Statistical Modelling: Theory and Applications",
+        year:    2024, status: "published", url: "", pdf: "",
+      },
+      {
+        title:   "An extension of the Chen distribution: properties, simulation " +
+                 "study and applications to data",
+        authors: "J. Acquah, B. Odoi and A. Y. Anafo",
+        venue:   "Asian Journal of Probability and Statistics",
+        year:    2023, status: "published", url: "", pdf: "",
+      },
+      {
+        title:   "The modified extended Chen distribution: properties and " +
+                 "applications to rainfall data",
+        authors: "A. Y. Anafo, L. Brew and S. Nasiru",
+        venue:   "Applied Mathematics and Information Sciences",
+        year:    2023, status: "published", url: "", pdf: "",
+      },
+      {
+        title:   "The equilibrium renewal Burr XII distribution: properties and " +
+                 "applications",
+        authors: "A. Y. Anafo, L. Brew and S. Nasiru",
+        venue:   "Asian Journal of Probability and Statistics",
+        year:    2021, status: "published", url: "", pdf: "",
+      },
+      {
+        title:   "The new rT\u2212X family of distributions: some properties " +
+                 "with applications",
+        authors: "C. Ampadu and A. Y. Anafo",
+        venue:   "Earthline Journal of Mathematical Sciences",
+        year:    2019, status: "published",
+        url:     "https://doi.org/10.34198/ejms.2219.409432", pdf: "",
+      },
+      {
+        title:   "Maximum likelihood estimation in an alpha power transformation " +
+                 "of the Ampadu-type",
+        authors: "C. Ampadu and A. Y. Anafo",
+        venue:   "Annals of Biostatistics & Biometric Applications",
+        year:    2019, status: "published",
+        url:     "https://doi.org/10.33552/ABBA.2019.02.000541", pdf: "",
+      },
+      {
+        title:   "The generalized Ampadu-G family of distributions: properties " +
+                 "and applications",
+        authors: "A. Y. Anafo and C. Ampadu",
+        venue:   "Earthline Journal of Mathematical Sciences, 4(1), 139\u2013167",
+        year:    2019, status: "published",
+        url:     "https://doi.org/10.34198/ejms.4120.139167", pdf: "",
+      },
 
     ],
+
+    /* Ongoing / recently completed projects, shown under their own heading.
+       Same fields as papers. */
+    ongoing: [
+      {
+        title:   "Predicting depression among men who have sex with men in " +
+                 "Ghana using machine learning algorithms",
+        venue:   "PLOS Mental Health",
+        status:  "accepted",
+        url:     "https://github.com/Zeidyen/msm-depression-ml",
+        note:    "Code and analysis on GitHub.",
+      },
+      {
+        title:   "Characterisation of air pollutants from singeing sites in Ghana",
+        status:  "completed",
+        url:     "https://github.com/Zeidyen/Ghana-singeing-air-quality",
+        note:    "Code and analysis on GitHub.",
+      },
+      {
+        title:   "Assessing the impact of seasonal malaria chemoprevention on " +
+                 "older age groups in Northern Ghana",
+        status:  "completed",
+        url:     "https://github.com/Zeidyen/SMC-Malaria-Ghana-Project",
+        note:    "Code and analysis on GitHub.",
+      },
+    ],
   },
+
 
   /* ======================================================================
      5. DEFAULT SUBMISSION INSTRUCTIONS
@@ -228,7 +316,7 @@ window.SITE = {
      ====================================================================== */
   submission: {
     method: "Email",
-    email:  "abdulzeid@aims.edu.gh",
+    email:  "ayanafo@umat.edu.gh",
     url:    "",   // a Google Form or LMS link, if you prefer that to email
     steps: [
       "Write your full name, student ID and the assignment number at the top of the first page.",
