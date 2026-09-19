@@ -116,6 +116,13 @@
     $("brandSub").textContent  = filled(p.institution) ? p.institution : "";
     document.title = p.name || "Course materials";
 
+    var par = p.parentSite || {};
+    if (par.url) {
+      $("footLine").insertAdjacentHTML("beforebegin",
+        '<p class="footback"><a href="' + esc(par.url) + '">\u2190 ' +
+        esc(par.label || "Back to my main site") + "</a></p>");
+    }
+
     $("footLine").innerHTML =
       esc(p.name || "") +
       (filled(p.title) ? " · " + esc(p.title) : "") +

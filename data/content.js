@@ -35,6 +35,10 @@ window.SITE = {
          "This site is where my students find lecture notes and assignments, " +
          "and where my papers are listed.",
 
+    // If this site sits inside your main portfolio (at /teaching/), this is the
+    // link back to it. Set it to "" if this site stands on its own.
+    parentSite: { url: "../", label: "Back to my main site" },
+
     // Delete any line you do not use. They appear as buttons on the home page.
     links: {
       scholar: "",   // https://scholar.google.com/citations?user=...

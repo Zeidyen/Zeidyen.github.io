@@ -261,3 +261,7 @@ a.chip:hover{border-color:var(--accent); color:var(--accent)}
 .paper .card-meta{margin-top:.3rem}
 .card-meta.em{font-style:italic; color:var(--ink-2)}
 .paper .badge{text-transform:capitalize}
+
+.footback{margin:0 0 10px}
+.footback a{font-size:.87rem; text-decoration:none; font-weight:500}
+.footback a:hover{text-decoration:underline}
