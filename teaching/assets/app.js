@@ -392,6 +392,10 @@
       ? papers.map(paperCard).join("")
       : emptyBox("Papers will be listed here.");
 
+    $("rThesis").innerHTML = r.thesis
+      ? '<h2 class="sec-h">Doctoral thesis</h2>' + paperCard(r.thesis)
+      : "";
+
     var ong = r.ongoing || [];
     $("rOngoing").innerHTML = ong.length
       ? '<h2 class="sec-h">Ongoing research</h2>' + ong.map(paperCard).join("")
@@ -403,7 +407,7 @@
           var st = String(p.status || "").toLowerCase();
           var cls = st === "published" || st === "accepted" ? "open"
                   : st === "under review" || st === "preprint" ? "soon"
-                  : st === "completed" ? "soon" : "tba";
+                  : st === "completed" || st === "thesis" ? "soon" : "tba";
           var out = [];
           if (p.pdf) out.push('<a class="file" href="' + esc(p.pdf) + '">' +
                               '<span class="ext">' + esc(extOf(p.pdf)) + "</span>PDF</a>");
