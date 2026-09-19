@@ -187,12 +187,13 @@ window.SITE = {
       // Carried over from your old portfolio page. The abstracts are yours;
       // the co-authors, journal and year were NOT on that page, so fill them in.
       {
-        title:   "The New rT\u2212X Family of Distributions",
+        title:   "The New rT\u2212X Family of Distributions: Some Properties " +
+                 "with Applications",
         authors: "EDIT ME: full author list, e.g. A. Y. Anafo and C. B. Ampadu",
         venue:   "EDIT ME: journal name",
         year:    2019,   // EDIT ME: confirm the year
         status:  "published",
-        url:     "https://www.researchgate.net/publication/333805569_ABBAMSID000541pdf",
+        url:     "https://www.researchgate.net/publication/335215281_The_New_r_T_-_X_Family_of_Distributions_Some_Properties_with_Applications",
         pdf:     "",
         note:    "Explores the rT\u2212X family induced by V, derives basic " +
                  "mathematical properties, and shows by simulation that maximum " +
@@ -207,7 +208,7 @@ window.SITE = {
         venue:   "EDIT ME: journal name",
         year:    2019,   // EDIT ME: confirm the year
         status:  "published",
-        url:     "",     // EDIT ME: DOI or ResearchGate link if you have one
+        url:     "https://www.researchgate.net/publication/333805569_ABBAMSID000541pdf",
         pdf:     "",
         note:    "Introduces a new alpha-power transformed family (APTA-F), " +
                  "derives maximum likelihood estimators for a sub-model, and " +
