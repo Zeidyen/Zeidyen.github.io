@@ -395,10 +395,13 @@
 
           return '<article class="card paper"><div class="card-head"><div class="card-title">' +
             "<h3>" + esc(p.title) + "</h3>" +
-            (p.authors ? '<p class="card-meta">' + esc(p.authors) + "</p>" : "") +
-            ((p.venue || p.year)
-              ? '<p class="card-meta em">' + esc([p.venue, p.year].filter(Boolean).join(", ")) + "</p>"
-              : "") +
+            (filled(p.authors) ? '<p class="card-meta">' + esc(p.authors) + "</p>" : "") +
+            (function () {
+              // Drop any part still marked EDIT ME so half-filled entries stay tidy.
+              var line = [filled(p.venue) ? p.venue : "", p.year || ""]
+                           .filter(Boolean).join(", ");
+              return line ? '<p class="card-meta em">' + esc(line) + "</p>" : "";
+            }()) +
             "</div>" +
             (p.status ? '<span class="badge ' + cls + '">' + esc(p.status) + "</span>" : "") +
             "</div>" +

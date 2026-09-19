@@ -27,8 +27,11 @@ window.SITE = {
     officeHours: "EDIT ME: e.g. Tuesdays 14:00–16:00, or by appointment",
 
     // A short paragraph for the front page. Two or three sentences is plenty.
-    bio: "EDIT ME: I teach mathematical analysis, probability and statistics at " +
-         "the University of Mines and Technology, Tarkwa. My research is on ___. " +
+    bio: "I teach mathematical analysis, probability and statistics at the " +
+         "University of Mines and Technology, Tarkwa. My research is in " +
+         "distribution theory and statistical estimation — new families of " +
+         "probability distributions, their mathematical properties, and how " +
+         "well maximum likelihood recovers their parameters in simulation. " +
          "This site is where my students find lecture notes and assignments, " +
          "and where my papers are listed.",
 
@@ -36,7 +39,7 @@ window.SITE = {
     links: {
       scholar: "",   // https://scholar.google.com/citations?user=...
       orcid:   "",   // https://orcid.org/0000-0000-0000-0000
-      github:  "",   // https://github.com/yourusername
+      github:  "https://github.com/Zeidyen",
       cv:      "",   // e.g. "files/resources/cv.pdf" once you upload one
     },
   },
@@ -163,25 +166,54 @@ window.SITE = {
      ====================================================================== */
   research: {
     summary:
-      "EDIT ME: a short paragraph on what you work on and why it matters.",
+      "I work on new families of probability distributions — deriving their " +
+      "mathematical properties, estimating their parameters by maximum " +
+      "likelihood, and testing how well that estimation behaves in simulation " +
+      "before applying the models to real data.",
 
     interests: [
-      "EDIT ME: e.g. Parameter estimation for heavy-tailed distributions",
-      "EDIT ME: e.g. Monte Carlo methods",
-      "EDIT ME: e.g. Time series modelling",
+      "New families of probability distributions",
+      "Maximum likelihood estimation",
+      "Monte Carlo simulation studies of estimator performance",
+      "Applications to engineering and materials science data",
     ],
 
     papers: [
-      // {
-      //   title:   "Title of the paper",
-      //   authors: "A. Y. Anafo, B. Someone and C. Another",
-      //   venue:   "Journal of Statistical Computation and Simulation",
-      //   year:    2026,
-      //   status:  "under review",
-      //   url:     "",                                  // DOI or arXiv link
-      //   pdf:     "",                                  // e.g. "files/papers/estimators.pdf"
-      //   note:    "One line on what the paper shows.",
-      // },
+
+      // Carried over from your old portfolio page. The abstracts are yours;
+      // the co-authors, journal and year were NOT on that page, so fill them in.
+      {
+        title:   "The New rT\u2212X Family of Distributions",
+        authors: "EDIT ME: full author list, e.g. A. Y. Anafo and C. B. Ampadu",
+        venue:   "EDIT ME: journal name",
+        year:    2019,   // EDIT ME: confirm the year
+        status:  "published",
+        url:     "https://www.researchgate.net/publication/333805569_ABBAMSID000541pdf",
+        pdf:     "",
+        note:    "Explores the rT\u2212X family induced by V, derives basic " +
+                 "mathematical properties, and shows by simulation that maximum " +
+                 "likelihood estimates the parameters of its sub-models adequately. " +
+                 "The sub-models are applied to materials science engineering data.",
+      },
+
+      {
+        title:   "Maximum Likelihood Estimation in an Alpha-Power Transformation " +
+                 "of the Ampadu-Type",
+        authors: "EDIT ME: full author list",
+        venue:   "EDIT ME: journal name",
+        year:    2019,   // EDIT ME: confirm the year
+        status:  "published",
+        url:     "",     // EDIT ME: DOI or ResearchGate link if you have one
+        pdf:     "",
+        note:    "Introduces a new alpha-power transformed family (APTA-F), " +
+                 "derives maximum likelihood estimators for a sub-model, and " +
+                 "confirms by simulation that the method recovers the unknown " +
+                 "parameters well.",
+      },
+
+      // Your recent simulation work (the estimator-comparison figures in your
+      // home folder) belongs here once it has a title and a venue.
+
     ],
   },
 
