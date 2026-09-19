@@ -1,140 +1,153 @@
-# Course website
+# Academic website — Dr Abdulzeid Yen Anafo
 
-A plain, fast website for handing out lecture notes, slides and assignments.
-No database, no logins, no build step — students just open the link.
+A fast, plain website for your courses and research. Students open a link and
+download their notes. No database, no logins, no build step, nothing to break.
 
-**Live address (once published):** `https://YOUR-GITHUB-USERNAME.github.io/REPO-NAME/`
+**Sections:** Home · Teaching (four courses, each with its own page) · Research · Contact
 
 ---
 
-## Part 1 — Put it online (do this once, about 10 minutes)
+## Part 1 — Put it online (once, about 10 minutes)
 
-### 1. Make a GitHub account and a repository
+### 1. Create the repository
 
-1. Go to <https://github.com> and sign in (or create a free account).
-2. Click **+** in the top-right → **New repository**.
-3. **Repository name:** something short, e.g. `stat301` — this becomes part of
-   the web address, so keep it lowercase with no spaces.
-4. Choose **Public**. *(GitHub Pages is free only on public repositories.)*
+1. Sign in at <https://github.com> (create a free account if you need one).
+2. Click **+** top-right → **New repository**.
+3. **Repository name:** use your username followed by `.github.io` — for example
+   `zeidyen.github.io`. That gives you the clean address
+   `https://zeidyen.github.io/` with nothing after it, which is what you want on
+   a CV. *(Any other name works too, it just puts the name in the address.)*
+4. Choose **Public**. GitHub Pages is free only on public repositories.
 5. Do **not** tick "Add a README file" — this folder already has one.
-6. Click **Create repository**.
+6. **Create repository**.
 
 ### 2. Upload this folder
 
-GitHub shows you a page with commands. In the Terminal app, run these, replacing
-`YOUR-USERNAME` and `REPO-NAME` with what you just chose:
+In the Terminal app, replacing `YOUR-USERNAME`:
 
 ```bash
 cd ~/course-site
-git remote add origin https://github.com/YOUR-USERNAME/REPO-NAME.git
-git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/YOUR-USERNAME.github.io.git
 git push -u origin main
 ```
 
-If it asks for a password, GitHub will **not** accept your account password.
-Create a token instead: GitHub → your avatar → **Settings** → **Developer
+When it asks for a password, GitHub will **not** accept your account password.
+Make a token instead: GitHub → your avatar → **Settings** → **Developer
 settings** → **Personal access tokens** → **Tokens (classic)** → **Generate new
-token**, tick the **repo** box, and paste that token as the password.
+token (classic)**, tick the **repo** checkbox, generate, and paste that token
+where it asks for the password.
 
 ### 3. Switch Pages on
 
-1. In your repository, go to **Settings** → **Pages** (left sidebar).
-2. Under **Source**, choose **Deploy from a branch**.
-3. Branch: **main**, folder: **/ (root)**. Click **Save**.
-4. Wait 1–2 minutes, then reload. GitHub shows the live address at the top.
-
-Share that address with your students. That's it.
+**Settings** → **Pages** → Source: **Deploy from a branch** → Branch: **main**,
+folder: **/ (root)** → **Save**. Wait a minute or two; the address appears at the
+top of that page.
 
 ---
 
-## Part 2 — Adding materials (the only thing you'll do from now on)
+## Part 2 — Fill in your details
 
-Everything students see lives in **one file: `data/course.js`**.
-Open it in any text editor. It is heavily commented and tells you what each
-part does.
+Open **`data/content.js`**. It is the only file you ever edit.
 
-### To post a lecture
+Search it for **`EDIT ME`** — every placeholder is marked that way, and
+**anything still saying `EDIT ME` is hidden from visitors**, so a half-finished
+site never looks broken. Fill them in as you go.
 
-1. Copy the PDF into the `files/lectures/` folder.
-   Use simple names: `week03-slides.pdf`, not `Week 3 (final) copy.pdf`.
-2. Open `data/course.js`, find the `lectures:` list, and add an entry:
+The parts to do first:
+
+| Section | What to fill |
+|---|---|
+| `person` | your position, office, office hours, and the short bio paragraph |
+| `courses` | the course code, term, level, times and room for each of the four |
+| `research` | your summary, interests, and papers |
+| `person.links` | Google Scholar / ORCID links, if you have them |
+
+---
+
+## Part 3 — Posting materials during the term
+
+### A lecture
+
+1. Put the PDF in the folder for that course, e.g.
+   `files/lectures/time-series/week03.pdf`. Use simple names — no spaces,
+   apostrophes or accents.
+2. In `data/content.js`, find that course's `lectures:` list and uncomment or
+   add an entry:
 
 ```js
-    {
-      week:   3,
-      date:   "2026-10-05",
-      title:  "Hypothesis testing",
-      topics: ["Null and alternative", "p-values", "Type I and II errors"],
-      files: [
-        { label: "Slides", path: "files/lectures/week03-slides.pdf" },
-        { label: "Notes",  path: "files/lectures/week03-notes.pdf"  },
-      ],
-    },
+        {
+          week: 3,
+          date: "2026-10-05",
+          title: "Stationarity and autocorrelation",
+          topics: ["Weak vs strict stationarity", "The ACF and PACF"],
+          files: [
+            { label: "Notes",  path: "files/lectures/time-series/week03.pdf" },
+            { label: "Slides", path: "files/lectures/time-series/week03-slides.pdf" },
+          ],
+        },
 ```
 
-### To post an assignment
+### An assignment
 
-1. Copy the PDF into `files/assignments/`.
-2. Add an entry to the `assignments:` list:
+Put the PDF in `files/assignments/<course>/`, then add to that course's
+`assignments:` list:
 
 ```js
-    {
-      id:          "A2",
-      title:       "Assignment 2",
-      due:         "2026-10-24",
-      dueTime:     "23:59",
-      points:      25,
-      description: "Questions 1–6 from the handout.",
-      files: [
-        { label: "Question paper", path: "files/assignments/A2.pdf" },
-      ],
-    },
+        {
+          id: "A2", title: "Assignment 2",
+          due: "2026-10-24", dueTime: "23:59", points: 25,
+          description: "Questions 1-6 from the handout.",
+          files: [{ label: "Question paper", path: "files/assignments/time-series/A2.pdf" }],
+        },
 ```
 
-The site works out the deadline badge on its own — green when it is far off,
-amber in the last three days, grey once it has closed. You never edit a status
-by hand.
+The deadline badge looks after itself — green when it is far off, amber inside
+the last three days, grey once it has closed. Open deadlines from every course
+also collect on the front page automatically. You never edit a status by hand.
 
-### To post an announcement
+### A paper
 
-Add an entry at the **top** of the `announcements:` list. Students see the
-newest first.
+Add to `research.papers`. Use `url` for the DOI or arXiv link and `pdf` for a
+file you have uploaded to `files/papers/`.
 
 ### Publishing your changes
 
 ```bash
 cd ~/course-site
 git add -A
-git commit -m "Add week 3 slides and Assignment 2"
+git commit -m "Add week 3 time series notes"
 git push
 ```
 
-The live site updates in about a minute.
+Live in about a minute.
 
 ---
 
-## Checking your work before you publish
+## Checking before you publish
 
-Double-click `index.html` to open it in your browser. It works straight from
-your computer — no server needed. If a change looks right there, it will look
-right online.
+Double-click `index.html`. It works straight from your computer, no server
+needed. If it looks right there, it will look right online.
 
-**If the page goes blank**, you have a typo in `data/course.js` — almost always
-a missing comma or quote. Press `Cmd+Option+I` in Chrome, click the **Console**
-tab, and it will name the line. Undo your last edit and try again.
+**Page goes blank?** You have a typo in `data/content.js` — nearly always a
+missing comma or quote. In Chrome press `Cmd+Option+I`, open the **Console**
+tab, and it names the line. Undo your last edit and retry.
 
 ---
 
-## Rules worth keeping
+## Two rules worth keeping
 
-- **Never put marks, grades or student names on this site.** It is public to
-  anyone with the address.
-- Keep filenames free of spaces, apostrophes and accents — some phones handle
-  them badly.
-- PDFs over about 25 MB are slow on mobile data. Compress large scans first
-  (Preview → File → Export → Reduce File Size).
-- GitHub's limit is 100 MB per file and it is not meant for video. Put lecture
-  recordings on YouTube or Drive and add them under `resources:` as a `url`.
+**Never put marks, grades or student names on this site.** It is public to
+anyone with the address, and git keeps a copy of everything you have ever
+pushed even after you delete it.
+
+**Check before posting a published paper's PDF.** You can usually post your own
+accepted manuscript but not the publisher's typeset version. Look the journal up
+at <https://sherpa.ac.uk/romeo>. Linking with `url` instead of uploading a `pdf`
+is always safe.
+
+Large scans are slow on phone data — compress them first (Preview → File →
+Export → Reduce File Size). GitHub refuses files over 100 MB and is not for
+video; put recordings on YouTube or Drive and add the link under `resources`.
 
 ---
 
@@ -142,11 +155,12 @@ tab, and it will name the line. Undo your last edit and try again.
 
 | Path | What it is |
 |---|---|
-| `data/course.js` | **All your content.** The only file you need to edit. |
-| `files/lectures/` | Lecture PDFs |
-| `files/assignments/` | Assignment PDFs |
-| `files/resources/` | Textbooks, past papers, formula sheets |
+| `data/content.js` | **All your content.** The only file you need to edit. |
+| `files/lectures/<course>/` | Lecture PDFs, one folder per course |
+| `files/assignments/<course>/` | Assignment PDFs |
+| `files/resources/<course>/` | Textbook extracts, past papers, formula sheets |
+| `files/papers/` | Your research PDFs |
 | `index.html` | Page skeleton — leave alone |
-| `assets/style.css` | Appearance — edit only if you want a different look |
-| `assets/app.js` | Builds the page from `course.js` — leave alone |
+| `assets/style.css` | Appearance — edit only to change the look |
+| `assets/app.js` | Builds the pages from `content.js` — leave alone |
 | `.nojekyll` | Tells GitHub to serve the files as-is. Do not delete. |

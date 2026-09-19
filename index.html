@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Course Materials</title>
-<meta name="description" content="Lecture notes, slides and assignments.">
+<title>Dr Abdulzeid Yen Anafo</title>
+<meta name="description" content="Teaching materials, course assignments and research.">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>∑</text></svg>">
 </head>
 <body>
 
@@ -14,91 +14,112 @@
 
 <header class="site-head">
   <div class="wrap head-inner">
-    <div class="brand">
-      <span class="brand-code" id="brandCode"></span>
-      <span class="brand-title" id="brandTitle"></span>
-    </div>
+    <a class="brand" href="#home">
+      <span class="brand-name" id="brandName"></span>
+      <span class="brand-sub"  id="brandSub"></span>
+    </a>
     <button id="themeBtn" class="icon-btn" type="button" aria-label="Switch between light and dark">
-      <span aria-hidden="true" id="themeIcon">◐</span>
+      <span aria-hidden="true">◐</span>
     </button>
   </div>
   <nav class="tabs wrap" id="tabs" aria-label="Sections">
-    <a href="#home"        data-tab="home">Home</a>
-    <a href="#lectures"    data-tab="lectures">Lectures</a>
-    <a href="#assignments" data-tab="assignments">Assignments</a>
-    <a href="#resources"   data-tab="resources">Resources</a>
-    <a href="#submit"      data-tab="submit">How to submit</a>
+    <a href="#home"     data-tab="home">Home</a>
+    <a href="#teaching" data-tab="teaching">Teaching</a>
+    <a href="#research" data-tab="research">Research</a>
+    <a href="#contact"  data-tab="contact">Contact</a>
   </nav>
 </header>
 
 <main id="main" class="wrap">
 
-  <!-- HOME -->
+  <!-- ---------------------------------------------------------- HOME -->
   <section id="view-home" class="view" hidden>
     <div class="hero">
-      <p class="eyebrow" id="homeTerm"></p>
-      <h1 id="homeTitle"></h1>
-      <p class="lede" id="homeDesc"></p>
+      <p class="eyebrow" id="homeAffil"></p>
+      <h1 id="homeName"></h1>
+      <p class="lede" id="homeBio"></p>
+      <div class="linkrow" id="homeLinks"></div>
     </div>
 
-    <div class="factgrid" id="homeFacts"></div>
+    <h2 class="sec-h">Courses</h2>
+    <div class="coursegrid" id="homeCourses"></div>
 
     <h2 class="sec-h">Announcements</h2>
     <div id="homeAnnouncements"></div>
 
-    <h2 class="sec-h">Next up</h2>
-    <div id="homeNext"></div>
+    <h2 class="sec-h">Upcoming deadlines</h2>
+    <div id="homeDeadlines"></div>
   </section>
 
-  <!-- LECTURES -->
-  <section id="view-lectures" class="view" hidden>
-    <h1>Lectures &amp; notes</h1>
-    <p class="lede">Slides, notes and readings for each week. Click a file to open or download it.</p>
-    <div class="toolbar">
-      <input type="search" id="lecSearch" placeholder="Search by week, title or topic…" aria-label="Search lectures">
+  <!-- ------------------------------------------------------ TEACHING -->
+  <section id="view-teaching" class="view" hidden>
+    <h1>Teaching</h1>
+    <p class="lede">Choose a course to find its lecture notes, assignments and reading.</p>
+    <div class="coursegrid" id="teachCurrent"></div>
+    <div id="teachPast"></div>
+  </section>
+
+  <!-- -------------------------------------------------------- COURSE -->
+  <section id="view-course" class="view" hidden>
+    <a class="back" href="#teaching">← All courses</a>
+    <div class="hero">
+      <p class="eyebrow" id="cTerm"></p>
+      <h1 id="cTitle"></h1>
+      <p class="lede" id="cDesc"></p>
     </div>
-    <div id="lectureList"></div>
-  </section>
+    <div class="factgrid" id="cFacts"></div>
 
-  <!-- ASSIGNMENTS -->
-  <section id="view-assignments" class="view" hidden>
-    <h1>Assignments</h1>
-    <p class="lede">Deadlines are shown in your own device's time zone. Read
-      <a href="#submit">How to submit</a> before sending anything.</p>
+    <h2 class="sec-h">Lectures &amp; notes</h2>
     <div class="toolbar">
-      <input type="search" id="asgSearch" placeholder="Search assignments…" aria-label="Search assignments">
-      <div class="seg" role="group" aria-label="Filter assignments">
-        <button type="button" data-filter="all"  class="on">All</button>
+      <input type="search" id="cLecSearch" placeholder="Search by week, title or topic…" aria-label="Search lectures">
+    </div>
+    <div id="cLectures"></div>
+
+    <h2 class="sec-h">Assignments</h2>
+    <div class="toolbar">
+      <div class="seg" id="cAsgFilter" role="group" aria-label="Filter assignments">
+        <button type="button" data-filter="all" class="on">All</button>
         <button type="button" data-filter="open">Open</button>
         <button type="button" data-filter="past">Past</button>
       </div>
     </div>
-    <div id="assignmentList"></div>
+    <div id="cAssignments"></div>
+
+    <h2 class="sec-h">Resources</h2>
+    <div id="cResources"></div>
+
+    <h2 class="sec-h">How to submit</h2>
+    <div id="cSubmit"></div>
   </section>
 
-  <!-- RESOURCES -->
-  <section id="view-resources" class="view" hidden>
-    <h1>Resources</h1>
-    <p class="lede">Textbooks, past papers, software and anything else useful.</p>
-    <div id="resourceList"></div>
+  <!-- ------------------------------------------------------ RESEARCH -->
+  <section id="view-research" class="view" hidden>
+    <h1>Research</h1>
+    <p class="lede" id="rSummary"></p>
+    <div id="rInterests"></div>
+    <h2 class="sec-h">Papers</h2>
+    <div id="rPapers"></div>
   </section>
 
-  <!-- SUBMIT -->
-  <section id="view-submit" class="view" hidden>
-    <h1>How to submit your work</h1>
-    <div id="submitBody"></div>
+  <!-- ------------------------------------------------------- CONTACT -->
+  <section id="view-contact" class="view" hidden>
+    <h1>Contact</h1>
+    <p class="lede">Email is the fastest way to reach me. Please put your course
+      code in the subject line.</p>
+    <div class="factgrid" id="contactFacts"></div>
+    <div id="contactCta"></div>
   </section>
 
 </main>
 
 <footer class="site-foot">
   <div class="wrap">
-    <p id="footInstructor"></p>
-    <p class="muted" id="footUpdated"></p>
+    <p id="footLine"></p>
+    <p class="muted">Updated through the term. Slides and assignments appear on each course page.</p>
   </div>
 </footer>
 
-<script src="data/course.js"></script>
+<script src="data/content.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>
