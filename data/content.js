@@ -122,15 +122,82 @@ window.SITE = {
 
     {
       id:     "prob-stats",
-      code:   "EDIT ME: e.g. STAT 201",
+      code:   "CE/EL/ME/GL/GM/ES 361",
       title:  "Probability and Statistics",
       term:   "EDIT ME: e.g. Semester 1, 2026/2027",
-      level:  "EDIT ME: e.g. Second year undergraduate",
+      level:  "EDIT ME: e.g. Second year engineering",
       active: true,
-      description:  "EDIT ME: what this course covers.",
+      description:
+        "The mathematics of uncertainty for engineers. Every measurement you " +
+        "take carries error and variation, and an engineer who cannot quantify " +
+        "that cannot say how much to trust the number in front of them. The " +
+        "course runs from descriptive statistics through probability and " +
+        "distributions to estimation, hypothesis testing and regression.",
       meetingTimes: "EDIT ME: days and times",
       location:     "EDIT ME: room",
-      lectures: [], assignments: [], resources: [], submission: null,
+
+      lectures: [
+        {
+          week: 1, date: "", title: "Introduction to Statistics",
+          topics: ["Why statistics, and its branches", "Variables and types of data",
+                   "Sampling procedures", "Levels of measurement",
+                   "Measures of location, dispersion and skewness"],
+          files: [{ label: "Notes (28 pp)", path: "files/lectures/prob-stats/ps361-ch1-introduction-to-statistics.pdf" }],
+        },
+        {
+          week: 2, date: "", title: "Introduction to Probability",
+          topics: ["Axioms of probability", "Conditional probability",
+                   "Bayes\u2019 rule", "Counting techniques"],
+          files: [{ label: "Notes (21 pp)", path: "files/lectures/prob-stats/ps361-ch2-introduction-to-probability.pdf" }],
+        },
+        {
+          week: 3, date: "", title: "Random Variables and Distributions",
+          topics: ["Discrete random variables", "Continuous random variables",
+                   "Probability mass and density functions"],
+          files: [{ label: "Notes (15 pp)", path: "files/lectures/prob-stats/ps361-ch3-random-variables-distributions.pdf" }],
+        },
+        {
+          week: 4, date: "", title: "Special Probability Distributions",
+          topics: ["Binomial and Poisson", "Normal distribution",
+                   "Choosing a distribution for engineering data"],
+          files: [{ label: "Notes (19 pp)", path: "files/lectures/prob-stats/ps361-ch4-special-probability-distributions.pdf" }],
+        },
+        {
+          week: 5, date: "", title: "Mathematical Expectation",
+          topics: ["Expectation of a function", "Variance and covariance"],
+          files: [{ label: "Notes (11 pp)", path: "files/lectures/prob-stats/ps361-ch5-mathematical-expectation.pdf" }],
+        },
+        {
+          week: 6, date: "", title: "Introduction to Estimation",
+          topics: ["Point estimation", "Interval estimation",
+                   "Confidence interval for a population proportion"],
+          files: [{ label: "Notes (9 pp)", path: "files/lectures/prob-stats/ps361-ch6-introduction-to-estimation.pdf" }],
+        },
+        {
+          week: 7, date: "", title: "Tests of Hypotheses and Significance",
+          topics: ["Tests on a single population mean", "Variance unknown",
+                   "Tests on a population proportion",
+                   "Difference between two population means"],
+          files: [{ label: "Notes (10 pp)", path: "files/lectures/prob-stats/ps361-ch7-tests-of-hypotheses.pdf" }],
+        },
+        {
+          week: 8, date: "", title: "Regression and Correlation Analysis",
+          topics: ["The regression model", "Least squares estimation",
+                   "Correlation"],
+          files: [{ label: "Notes (12 pp)", path: "files/lectures/prob-stats/ps361-ch8-regression-and-correlation.pdf" }],
+        },
+      ],
+
+      assignments: [],
+
+      resources: [
+        { title: "Complete lecture notes",
+          note:  "All eight chapters in one file, 131 pages, 5.8 MB. The chapter " +
+                 "files above are smaller if you are on mobile data.",
+          path:  "files/lectures/prob-stats/ps361-full-lecture-notes.pdf" },
+      ],
+
+      submission: null,
     },
 
     {
