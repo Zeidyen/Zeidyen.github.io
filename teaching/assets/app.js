@@ -161,9 +161,10 @@
 
     var L = p.links || {};
     var buttons = [
-      [L.scholar, "Google Scholar", true],
-      [L.orcid,   "ORCID",          true],
-      [L.github,  "GitHub",         true],
+      [L.scholar,      "Google Scholar", true],
+      [L.orcid,        "ORCID",          true],
+      [L.researchgate, "ResearchGate",   true],
+      [L.github,       "GitHub",         true],
       [L.cv,      "Curriculum vitae", /^https?:/i.test(L.cv || "")]
     ].filter(function (b) { return filled(b[0]); });
 

@@ -41,10 +41,11 @@ window.SITE = {
 
     // Delete any line you do not use. They appear as buttons on the home page.
     links: {
-      scholar: "",   // https://scholar.google.com/citations?user=...
-      orcid:   "",   // https://orcid.org/0000-0000-0000-0000
-      github:  "https://github.com/Zeidyen",
-      cv:      "cv.html",   // the CV page; it links to the PDF itself
+      scholar:      "https://scholar.google.com/citations?user=HL0V5SgAAAAJ",
+      orcid:        "https://orcid.org/0000-0002-9399-8839",
+      researchgate: "https://www.researchgate.net/profile/Abdulzeid-Anafo",
+      github:       "https://github.com/Zeidyen",
+      cv:           "cv.html",   // the CV page; it links to the PDF itself
     },
   },
 
