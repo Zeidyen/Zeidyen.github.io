@@ -353,7 +353,7 @@
     });
     $("cProjects").innerHTML = projs.length
       ? projs.map(function (a) { return assignmentCard(a, ""); }).join("")
-      : emptyBox("No projects set for this course yet.");
+      : emptyBox("No group projects set for this course yet.");
 
     // results: a link out to a signed-in lookup, never marks held on this site
     var res = c.results || {};
