@@ -99,3 +99,49 @@
   font:600 .72rem/1 var(--sans); letter-spacing:.1em; text-transform:uppercase;
   color:var(--ink-3); margin:0 0 12px;
 }
+
+/* ===================================================================
+   Scroll reveal — the fade-in the old template had, rebuilt on
+   IntersectionObserver. The .js-reveal gate means that if JavaScript
+   never runs, nothing is ever hidden.
+   =================================================================== */
+.js-reveal .reveal{
+  opacity:0;
+  transition:opacity .62s cubic-bezier(.22,.61,.36,1),
+             transform .62s cubic-bezier(.22,.61,.36,1);
+  will-change:opacity, transform;
+}
+.js-reveal .reveal[data-fx="left"] {transform:translate3d(-34px,0,0)}
+.js-reveal .reveal[data-fx="right"]{transform:translate3d( 34px,0,0)}
+.js-reveal .reveal[data-fx="up"]   {transform:translate3d(0,26px,0)}
+.js-reveal .reveal.is-in{opacity:1; transform:none}
+
+/* Animated tab underline: slides in from the left on hover, sits under
+   the current page. */
+.tabs a{position:relative}
+.tabs a::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:var(--accent); transform:scaleX(0); transform-origin:left center;
+  transition:transform .26s cubic-bezier(.22,.61,.36,1);
+}
+.tabs a:hover::after{transform:scaleX(1)}
+.tabs a[aria-current="page"]{border-bottom-color:transparent}
+.tabs a[aria-current="page"]::after{transform:scaleX(1)}
+
+/* Tiles lift a little further now that motion is part of the design. */
+.tile:hover{transform:translateY(-3px)}
+.proj{transition:transform .13s ease, border-color .13s ease}
+.proj:hover{transform:translateY(-2px); border-color:var(--accent)}
+.pub{transition:border-color .13s ease}
+.pub:hover{border-color:var(--line-2)}
+
+html{scroll-behavior:smooth}
+
+/* Anyone who asks for less motion gets none of it. */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js-reveal .reveal{opacity:1 !important; transform:none !important; transition:none}
+  .tabs a::after{transition:none}
+  .tile,.proj{transition:none}
+  .tile:hover,.proj:hover{transform:none}
+}
