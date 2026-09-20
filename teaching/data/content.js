@@ -27,14 +27,16 @@ window.SITE = {
     officeHours: "EDIT ME: e.g. Tuesdays 14:00–16:00, or by appointment",
 
     // A short paragraph for the front page. Two or three sentences is plenty.
-    bio: "I teach mathematical analysis, probability and statistics at the " +
-         "University of Mines and Technology, Tarkwa. My research runs in " +
-         "two directions: distribution theory — new families of probability " +
-         "distributions and the estimators that fit them — and applied " +
-         "biostatistics in Ghana, where those models meet real data on " +
-         "malaria, air quality, cancer and mental health. This site is where " +
-         "my students find lecture notes and assignments, and where my " +
-         "papers are listed.",
+    bio: "I am a lecturer and researcher in the Department of Computing and " +
+         "Data Analytics at the University of Mines and Technology, Tarkwa, " +
+         "where I teach mathematical analysis, probability and statistics. " +
+         "My research runs in two directions. I build new families of " +
+         "probability distributions and study the estimators that fit them; " +
+         "and I apply those methods to health data across Ghana — malaria " +
+         "burden, air quality, cancer survival and mental health. I care most " +
+         "about the point where the mathematics has to survive contact with " +
+         "messy, real data. This site is where my students find lecture notes " +
+         "and assignments, and where my papers, code and dashboards live.",
 
     // If this site sits inside your main portfolio (at /teaching/), this is the
     // link back to it. Set it to "" if this site stands on its own.
