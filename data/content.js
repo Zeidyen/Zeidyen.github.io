@@ -28,12 +28,13 @@ window.SITE = {
 
     // A short paragraph for the front page. Two or three sentences is plenty.
     bio: "I teach mathematical analysis, probability and statistics at the " +
-         "University of Mines and Technology, Tarkwa. My research is in " +
-         "distribution theory and statistical estimation — new families of " +
-         "probability distributions, their mathematical properties, and how " +
-         "well maximum likelihood recovers their parameters in simulation. " +
-         "This site is where my students find lecture notes and assignments, " +
-         "and where my papers are listed.",
+         "University of Mines and Technology, Tarkwa. My research runs in " +
+         "two directions: distribution theory — new families of probability " +
+         "distributions and the estimators that fit them — and applied " +
+         "biostatistics in Ghana, where those models meet real data on " +
+         "malaria, air quality, cancer and mental health. This site is where " +
+         "my students find lecture notes and assignments, and where my " +
+         "papers are listed.",
 
     // If this site sits inside your main portfolio (at /teaching/), this is the
     // link back to it. Set it to "" if this site stands on its own.
