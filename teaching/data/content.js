@@ -186,98 +186,244 @@ window.SITE = {
     // Taken from your CV (ABDULZEID YEN ANAFO_Resume.pdf), newest first.
     // NOTE: the CV writes your name both as "Anafo, Y. A." and "Anafo, A. Y.".
     // Normalised to A. Y. Anafo here — correct it if the other is right.
+    /* Verified against ORCID 0000-0002-9399-8839 and Crossref,
+       September 2026. Every entry carries a resolvable DOI except the
+       last, which is not indexed anywhere I could find.
+       Author lists come from the publisher record, with his name
+       normalised to A. Y. Anafo (publishers spell it four ways). */
     papers: [
+
+      {
+        title:   "Aimee, an AI-powered HIV prevention and sexual and " +
+                 "reproductive health intervention for adolescent girls and " +
+                 "young women in South Africa: Design, pilot study methods, and " +
+                 "feasibility",
+        authors: "A. Spyrelis, S. Frade, S. Cooper, S. Morris, S. Smedinghoff, " +
+                 "A. Y. Anafo, P. Potsane, C. Sokhela, S. Stafford, D. Rech, R. " +
+                 "Mendonca, N. Maricich, K. Gupta, H. Lee, Y. Richard, P. " +
+                 "Isabelli, J. Ratevosian, B. Segal, M. Sundaram and N. Mtshali",
+        venue:   "VeriXiv",
+        year:    2026, status: "preprint",
+        url:     "https://doi.org/10.12688/verixiv.3679.1", pdf: "",
+      },
+
+      {
+        title:   "Ambient particulate matter pollution and lung function among " +
+                 "informal transport workers in Ghana",
+        authors: "E. Akyeampong, M. Opoku-Mireku, B. Owusu, E. Ashun, A. Y. " +
+                 "Anafo, A. Alvin Arnold Adjei, I. K. Agbenyezi, P. Dinko, A. A. " +
+                 "Arthur and B. D. Boluwatife",
+        venue:   "Scientific Reports, 16(1), 21465",
+        year:    2026, status: "published",
+        url:     "https://doi.org/10.1038/s41598-026-51982-1", pdf: "",
+      },
+
+      {
+        title:   "Competing-risk Prognostic Modelling of Breast Cancer-specific " +
+                 "Mortality in Ghana: Stability Selection, Internal Validation, " +
+                 "and Risk Stratification",
+        authors: "E. M. Baah, S. Bosson-Amedenu and A. Y. Anafo",
+        venue:   "Asian Journal of Probability and Statistics, 28(7), 118-134",
+        year:    2026, status: "published",
+        url:     "https://doi.org/10.9734/ajpas/2026/v28i7921", pdf: "",
+      },
+
+      {
+        title:   "Lagged climatic drivers of malaria incidence severity and " +
+                 "mortality using SEM and SHAP hybrid modelling in Ghana",
+        authors: "S. Bosson-Amedenu and A. Y. Anafo",
+        venue:   "Discover Public Health, 23(1), 813",
+        year:    2026, status: "published",
+        url:     "https://doi.org/10.1186/s12982-026-02163-y", pdf: "",
+      },
+
+      {
+        title:   "Malaria incidence, severity and mortality in children under " +
+                 "five in Ghana: evidence from generalised additive models",
+        authors: "S. Bosson-Amedenu, F. Eyiah-Bediako and A. Y. Anafo",
+        venue:   "BMC Public Health, 26(1), 653",
+        year:    2026, status: "published",
+        url:     "https://doi.org/10.1186/s12889-025-25931-y", pdf: "",
+      },
+
+      {
+        title:   "Phase-specific climatic sensitivities of under-five malaria in " +
+                 "Ghana using epidemic modelling, NB-GAMs and SHAP " +
+                 "explainability",
+        authors: "E. M. Baah, S. Bosson-Amedenu, A. Y. Anafo, F. H. Adams and D. " +
+                 "Y. Kparib",
+        venue:   "Scientific Reports",
+        year:    2026, status: "published",
+        url:     "https://doi.org/10.1038/s41598-026-64032-7", pdf: "",
+      },
+
+      {
+        title:   "Evaluating malaria burden in children under-five and " +
+                 "intervention outcomes in Tarkwa-Nsuaem municipality",
+        authors: "A. Y. Anafo, S. Bosson-Amedenu, V. U. Gmayinaam, A. Enock, S. " +
+                 "Ocloo and J. Acquah",
+        venue:   "BMC Infectious Diseases, 25(1), 294",
+        year:    2025, status: "published",
+        url:     "https://doi.org/10.1186/s12879-025-10705-z", pdf: "",
+      },
+
+      {
+        title:   "Modeling Regional Trends in Caesarean Births across Ghana's " +
+                 "Former Ten Regions over a Decade",
+        authors: "S. Bosson-Amedenu, A. Y. Anafo, A. Ouerfelli and N. Ouerfelli",
+        venue:   "Asian Journal of Pregnancy and Childbirth, 8(1), 505-526",
+        year:    2025, status: "published",
+        url:     "https://doi.org/10.9734/ajpcb/2025/v8i1186", pdf: "",
+      },
 
       {
         title:   "Modified alpha power transformed Topp-Leone family of " +
                  "distributions with applications and regression",
-        authors: "A. Y. Anafo, S. Ocloo and S. Nasiru",
-        venue:   "Scientific African, vol. 30, e02993",
-        year:    2025, status: "published", url: "", pdf: "",
+        authors: "S. K. Ocloo, A. Y. Anafo and S. Nasiru",
+        venue:   "Scientific African, 30, e02993",
+        year:    2025, status: "published",
+        url:     "https://doi.org/10.1016/j.sciaf.2025.e02993", pdf: "",
       },
+
       {
-        title:   "Evaluating malaria burden in children under-five and " +
-                 "intervention outcomes in Tarkwa-Nsuaem municipality",
-        authors: "A. Y. Anafo, S. Bosson-Amedenu, V. U. Gmayinaam, A. Enock, " +
-                 "S. Ocloo and J. Acquah",
-        venue:   "BMC Infectious Diseases, 25(1), 294",
-        year:    2025, status: "published", url: "", pdf: "",
+        title:   "Predicting depression among men who have sex with men in Ghana " +
+                 "using machine learning algorithms",
+        authors: "A. Y. Anafo, L. E. Nelson, L. Wilton, V. U. Gmayinaam and S. " +
+                 "Ocloo",
+        venue:   "PLOS Mental Health, 2(11), e0000485",
+        year:    2025, status: "published",
+        url:     "https://doi.org/10.1371/journal.pmen.0000485", pdf: "",
       },
+
       {
-        title:   "Examining Cesarean section rates in Ghana\u2019s 10 regions " +
-                 "over a decade: a comprehensive national investigation",
-        authors: "S. Bosson-Amedenu, A. Y. Anafo, A. Ouerfelli, N. Ouerfelli " +
-                 "and N. Ouerfelli",
-        venue:   "BioMed Research International, 3774435",
-        year:    2024, status: "published", url: "", pdf: "",
+        title:   "Risk Stratification of Breast Cancer Metastasis: A Predictive " +
+                 "Modelling Framework Using Clinical and Hormonal Receptor Data " +
+                 "in a Ghanaian Cohort",
+        authors: "A. Y. Anafo, S. Bosson-Amedenu, E. Ayitey, V. U. Gmayinaam, J. " +
+                 "Acquah, S. Ocloo, S. B. Boateng and A. M. Baidoo",
+        venue:   "Research Square",
+        year:    2025, status: "preprint",
+        url:     "https://doi.org/10.21203/rs.3.rs-6671298/v1", pdf: "",
       },
+
       {
-        title:   "New weighted Burr XII distribution: statistical properties, " +
-                 "applications and regression",
-        authors: "A. Y. Anafo, S. K. Ocloo and S. Nasiru",
-        venue:   "International Journal of Mathematics and Mathematical Sciences, 4098771",
-        year:    2024, status: "published", url: "", pdf: "",
-        // Your CV lists this paper twice, under two slightly different titles.
-        // Merged into one entry here.
+        title:   "Application of Stacked Ensemble Techniques for Classifying " +
+                 "Recurrent Head and Neck Squamous Cell Carcinoma Prognosis",
+        authors: "J. Acquah, D. K. Owusu and A. Y. Anafo",
+        venue:   "Asian Journal of Research in Computer Science, 17(4), 77-94",
+        year:    2024, status: "published",
+        url:     "https://doi.org/10.9734/ajrcos/2024/v17i4431", pdf: "",
       },
+
       {
         title:   "Covariate level stratification assessment of mortalities due " +
                  "to competing risks and breast cancer in Ghana",
-        authors: "J. Acquah, F. Eyiah-Bediako and A. Y. Anafo",
-        venue:   "Scientific African",
-        year:    2024, status: "published", url: "", pdf: "",
+        authors: "J. Acquah, S. Bosson-Amedenu, F. Eyiah-Bediako and A. Y. Anafo",
+        venue:   "Scientific African, 23, e02060",
+        year:    2024, status: "published",
+        url:     "https://doi.org/10.1016/j.sciaf.2024.e02060", pdf: "",
       },
+
       {
-        title:   "Logit Gudermannian distribution: properties, regression and " +
-                 "applications",
-        authors: "A. Y. Anafo, O. Selasi and H. M. Napari",
-        venue:   "Journal of Statistical Modelling: Theory and Applications",
-        year:    2024, status: "published", url: "", pdf: "",
+        title:   "Examining Cesarean Section Rates in Ghana’s 10 Regions Over a " +
+                 "Decade a Comprehensive National Investigation",
+        authors: "S. Bosson-Amedenu, A. Y. Anafo, A. Ouerfelli and N. Ouerfelli",
+        venue:   "BioMed Research International, 2024(1), 3774435",
+        year:    2024, status: "published",
+        url:     "https://doi.org/10.1155/2024/3774435", pdf: "",
       },
+
       {
-        title:   "An extension of the Chen distribution: properties, simulation " +
-                 "study and applications to data",
-        authors: "J. Acquah, B. Odoi and A. Y. Anafo",
-        venue:   "Asian Journal of Probability and Statistics",
-        year:    2023, status: "published", url: "", pdf: "",
+        title:   "Malaria Projections: Simulating between Simple Forecast Models " +
+                 "And  Multi-Model Ensemble",
+        authors: "S. Bosson-Amedenu, T. Oduro-Okyireh, A. Y. Anafo and A. " +
+                 "Constance Mensah",
+        venue:   "SSRN",
+        year:    2024, status: "preprint",
+        url:     "https://doi.org/10.2139/ssrn.4703162", pdf: "",
       },
+
       {
-        title:   "The modified extended Chen distribution: properties and " +
-                 "applications to rainfall data",
+        title:   "Mathematical Approaches to Understanding Prostate Cancer " +
+                 "Progression: A Compartmental Modeling Study in Ghana",
+        authors: "S. Bosson-Amedenu, E. Ayitey and A. Y. Anafo",
+        venue:   "Research Square",
+        year:    2024, status: "preprint",
+        url:     "https://doi.org/10.21203/rs.3.rs-5282657/v1", pdf: "",
+      },
+
+      {
+        title:   "New Weighted Burr XII Distribution: Statistical Properties, " +
+                 "Applications, and Regression",
+        authors: "A. Y. Anafo, S. K. Ocloo and S. Nasiru",
+        venue:   "International Journal of Mathematics and Mathematical " +
+                 "Sciences, 2024, 1-14",
+        year:    2024, status: "published",
+        url:     "https://doi.org/10.1155/2024/4098771", pdf: "",
+      },
+
+      {
+        title:   "An Extension of the Chen Distribution: Properties, Simulation " +
+                 "Study and Applications to Data",
+        authors: "J. Acquah, B. Odoi, A. Y. Anafo and B. Senyea",
+        venue:   "Asian Journal of Probability and Statistics, 23(4), 26-42",
+        year:    2023, status: "published",
+        url:     "https://doi.org/10.9734/ajpas/2023/v23i4510", pdf: "",
+      },
+
+      {
+        title:   "The Modified Extended Chen Distribution: Properties and " +
+                 "Application to Rainfall Data",
         authors: "A. Y. Anafo, L. Brew and S. Nasiru",
-        venue:   "Applied Mathematics and Information Sciences",
-        year:    2023, status: "published", url: "", pdf: "",
+        venue:   "Applied Mathematics & Information Sciences, 16(5), 711-728",
+        year:    2022, status: "published",
+        url:     "https://doi.org/10.18576/AMIS/160506", pdf: "",
       },
+
       {
-        title:   "The equilibrium renewal Burr XII distribution: properties and " +
-                 "applications",
+        title:   "The Equilibrium Renewal Burr XII Distribution: Properties and " +
+                 "Applications",
         authors: "A. Y. Anafo, L. Brew and S. Nasiru",
-        venue:   "Asian Journal of Probability and Statistics",
-        year:    2021, status: "published", url: "", pdf: "",
+        venue:   "Asian Journal of Probability and Statistics, 18-40",
+        year:    2021, status: "published",
+        url:     "https://doi.org/10.9734/AJPAS/2021/V15I230349", pdf: "",
       },
+
       {
-        title:   "The new rT\u2212X family of distributions: some properties " +
-                 "with applications",
-        authors: "C. Ampadu and A. Y. Anafo",
-        venue:   "Earthline Journal of Mathematical Sciences",
-        year:    2019, status: "published",
-        url:     "https://doi.org/10.34198/ejms.2219.409432", pdf: "",
+        title:   "The Generalized Ampadu-G Family of Distributions: Properties, " +
+                 "Applications and Characterizations",
+        authors: "C. B. Ampadu and A. Y. Anafo",
+        venue:   "Earthline Journal of Mathematical Sciences, 139-167",
+        year:    2020, status: "published",
+        url:     "https://doi.org/10.34198/ejms.4120.139167", pdf: "",
       },
+
       {
-        title:   "Maximum likelihood estimation in an alpha power transformation " +
-                 "of the Ampadu-type",
-        authors: "C. Ampadu and A. Y. Anafo",
-        venue:   "Annals of Biostatistics & Biometric Applications",
+        title:   "Maximum Likelihood Estimation in an Alpha-Power Transformation " +
+                 "of the Ampadu-Type",
+        authors: "C. B. Ampadu and A. Y. Anafo",
+        venue:   "Annals of Biostatistics & Biometric Applications, 2(4)",
         year:    2019, status: "published",
         url:     "https://doi.org/10.33552/ABBA.2019.02.000541", pdf: "",
       },
+
       {
-        title:   "The generalized Ampadu-G family of distributions: properties " +
-                 "and applications",
-        authors: "A. Y. Anafo and C. Ampadu",
-        venue:   "Earthline Journal of Mathematical Sciences, 4(1), 139\u2013167",
+        title:   "The New rT - X Family of Distributions: Some Properties with " +
+                 "Applications",
+        authors: "C. B. Ampadu and A. Y. Anafo",
+        venue:   "Earthline Journal of Mathematical Sciences, 409-432",
         year:    2019, status: "published",
-        url:     "https://doi.org/10.34198/ejms.4120.139167", pdf: "",
+        url:     "https://doi.org/10.34198/ejms.2219.409432", pdf: "",
+      },
+
+      {
+        title:   "Logit Gudermannian distribution: properties, regression " +
+                 "and applications",
+        authors: "A. Y. Anafo, O. Selasi and H. M. Napari",
+        venue:   "Journal of Statistical Modelling: Theory and Applications",
+        year:    2024, status: "published",
+        url:     "",   // no DOI found online - add one if you have it
+        pdf:     "",
       },
 
     ],
@@ -304,27 +450,21 @@ window.SITE = {
 
     /* Ongoing / recently completed projects, shown under their own heading.
        Same fields as papers. */
+    /* Project repositories. The depression study that used to sit here is
+       now published (PLOS Mental Health, 2025) and has moved up to papers. */
     ongoing: [
       {
-        title:   "Predicting depression among men who have sex with men in " +
-                 "Ghana using machine learning algorithms",
-        venue:   "PLOS Mental Health",
-        status:  "accepted",
-        url:     "https://github.com/Zeidyen/msm-depression-ml",
-        note:    "Code and analysis on GitHub.",
+        title:  "Characterisation of air pollutants from singeing sites in Ghana",
+        status: "completed",
+        url:    "https://github.com/Zeidyen/Ghana-singeing-air-quality",
+        note:   "Field study under the NIH GHES award. Code and analysis on GitHub.",
       },
       {
-        title:   "Characterisation of air pollutants from singeing sites in Ghana",
-        status:  "completed",
-        url:     "https://github.com/Zeidyen/Ghana-singeing-air-quality",
-        note:    "Code and analysis on GitHub.",
-      },
-      {
-        title:   "Assessing the impact of seasonal malaria chemoprevention on " +
-                 "older age groups in Northern Ghana",
-        status:  "completed",
-        url:     "https://github.com/Zeidyen/SMC-Malaria-Ghana-Project",
-        note:    "Code and analysis on GitHub.",
+        title:  "Assessing the impact of seasonal malaria chemoprevention on " +
+                "older age groups in Northern Ghana",
+        status: "completed",
+        url:    "https://github.com/Zeidyen/SMC-Malaria-Ghana-Project",
+        note:   "Code and analysis on GitHub.",
       },
     ],
   },
