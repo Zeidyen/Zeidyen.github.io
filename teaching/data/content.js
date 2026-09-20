@@ -44,7 +44,7 @@ window.SITE = {
       scholar: "",   // https://scholar.google.com/citations?user=...
       orcid:   "",   // https://orcid.org/0000-0000-0000-0000
       github:  "https://github.com/Zeidyen",
-      cv:      "",   // e.g. "files/resources/cv.pdf" once you upload one
+      cv:      "cv.html",   // the CV page; it links to the PDF itself
     },
   },
 
