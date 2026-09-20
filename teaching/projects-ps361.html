@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Group Projects, Probability and Statistics 361</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  main.br{max-width:840px; margin:0 auto; padding:38px 20px 70px}
+  .br-head{border-bottom:2px solid var(--accent); padding-bottom:18px; margin-bottom:28px}
+  .br-head p.eyebrow{margin-bottom:.7rem}
+  h2.sec{
+    font:600 .76rem/1 var(--sans); letter-spacing:.11em; text-transform:uppercase;
+    color:var(--accent); margin:40px 0 14px; padding-bottom:7px;
+    border-bottom:1px solid var(--line);
+  }
+  .proj-card{
+    background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--accent);
+    border-radius:var(--radius); padding:20px 22px; margin-bottom:18px; box-shadow:var(--shadow);
+  }
+  .proj-card h3{margin:0 0 3px; font:600 1.2rem/1.3 var(--serif)}
+  .tagline{margin:0 0 14px; color:var(--ink-3); font-size:.85rem; font-style:italic}
+  .proj-card h4{
+    margin:18px 0 7px; font:600 .7rem/1 var(--sans); letter-spacing:.09em;
+    text-transform:uppercase; color:var(--ink-3);
+  }
+  .proj-card p, .proj-card li{font-size:.93rem; color:var(--ink-2)}
+  .proj-card ul, .proj-card ol{padding-left:1.2em; margin:.4rem 0}
+  .proj-card li{margin:.28em 0}
+  .chapters{
+    display:inline-block; padding:4px 10px; border-radius:999px; margin-bottom:12px;
+    background:var(--accent-soft); color:var(--accent);
+    font:600 .68rem/1.5 var(--sans); letter-spacing:.04em;
+  }
+  table{border-collapse:collapse; width:100%; font-size:.9rem; margin:.5rem 0 0}
+  th,td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+  th{font:600 .68rem/1 var(--sans); letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3)}
+  td.num{white-space:nowrap; font-variant-numeric:tabular-nums; color:var(--ink)}
+  .disc{
+    display:grid; grid-template-columns:172px 1fr; gap:3px 14px;
+    font-size:.9rem; margin-top:.4rem;
+  }
+  .disc b{color:var(--ink); font-weight:600}
+  .disc span{color:var(--ink-2)}
+  @media (max-width:560px){ .disc{grid-template-columns:1fr; gap:1px} .disc b{margin-top:.6rem} }
+  .warn{
+    background:var(--warn-soft); border-left:3px solid var(--warn);
+    border-radius:8px; padding:14px 16px; margin:14px 0 0;
+  }
+  .warn p{margin:0; font-size:.9rem; color:var(--ink)}
+  .toolbar-br{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px}
+  @media print{
+    .toolbar-br{display:none}
+    body{background:#fff; font-size:10.5pt}
+    main.br{padding:0; max-width:none}
+    .proj-card{page-break-inside:avoid; box-shadow:none}
+    h2.sec{color:#000}
+    @page{margin:16mm}
+  }
+</style>
+</head>
+<body>
+<main class="br">
+
+  <div class="toolbar-br">
+    <a class="chip" href="index.html#course/prob-stats">&larr; Back to the course</a>
+    <a class="chip" href="files/assignments/prob-stats/ps361-group-projects.pdf">Download as PDF</a>
+  </div>
+
+  <header class="br-head">
+    <p class="eyebrow">CE / EL / ME / GL / GM / ES 361 &middot; First Semester, 2025/2026</p>
+    <h1>Group Projects</h1>
+    <p class="lede">Three open projects. Your group picks one, finds its own data,
+      and answers a question that matters in your own field of engineering. There
+      is no model answer and no dataset handed to you: choosing well is part of
+      the work.</p>
+  </header>
+
+  <h2 class="sec">How it works</h2>
+  <ul>
+    <li><strong>Groups of five or six</strong>, from the same programme where possible.</li>
+    <li><strong>Pick one project</strong> from the three below. Groups in the same
+      class may pick the same project, but not the same data.</li>
+    <li><strong>Collect your own data.</strong> Measure it, or take it from a
+      published source you can cite. A minimum of <strong>30 observations</strong>;
+      more is better for Projects 2 and 3.</li>
+    <li><strong>Hand in a report</strong> of 8 to 12 pages, plus your data file and
+      any code.</li>
+    <li><strong>Present for 10 minutes</strong>, with 5 minutes of questions. Every
+      member speaks. I will ask at least one person to explain a calculation.</li>
+  </ul>
+
+  <h2 class="sec">Project 1. Measure something, and say how sure you are</h2>
+  <div class="proj-card">
+    <span class="chapters">Chapters 1 and 6</span>
+    <h3>Describing variation and estimating a parameter</h3>
+    <p class="tagline">Every measurement carries error. Quantify it.</p>
+
+    <h4>The question</h4>
+    <p>Choose one quantity in your field that varies from unit to unit or from day
+      to day. Measure it properly, describe how it varies, and give an interval
+      estimate for its true mean or proportion with a stated confidence level.
+      Then say what that interval means for a decision an engineer would take.</p>
+
+    <h4>What to do</h4>
+    <ol>
+      <li>Define the population precisely. "Concrete on site" is not a population;
+        "35&nbsp;MPa cubes cast on Block B between weeks 1 and 4" is.</li>
+      <li>Choose and justify a sampling procedure from Chapter 1. Say why you did
+        not use the others.</li>
+      <li>Collect at least 30 observations. Record when, where and how.</li>
+      <li>Summarise with measures of location, dispersion and skewness. Draw the
+        distribution.</li>
+      <li>Build a confidence interval for the mean, or for a proportion if your
+        quantity is pass/fail.</li>
+      <li>State what would have to change for the interval to be half as wide.</li>
+    </ol>
+
+    <h4>Where to find your quantity</h4>
+    <div class="disc">
+      <b>Mechanical</b><span>Surface roughness across a batch; fuel consumption per trip; bolt torque at installation</span>
+      <b>Computer science</b><span>API response time; build duration; battery drain per hour of the same task</span>
+      <b>Electrical</b><span>Mains voltage through the day; LED luminous output across a batch; standby current draw</span>
+      <b>Civil</b><span>Concrete cube strength at 28 days; traffic counts in a fixed hour; slump test values</span>
+      <b>Geological</b><span>Assay grade along a drill core; rock density by sample; fracture spacing</span>
+      <b>Geomatic</b><span>GPS positional error at a known point; levelling misclosure; repeated total-station distances</span>
+      <b>Environmental</b><span>PM<sub>2.5</sub> at a roadside; water turbidity; daytime noise level</span>
+    </div>
+
+    <div class="warn"><p><strong>The trap.</strong> Most groups collect 30 numbers
+      from one machine, one site, or one hour, then claim an interval for the whole
+      population. If your sample cannot support the claim, say so. Honest limits
+      earn more marks than a confident wrong answer.</p></div>
+  </div>
+
+  <h2 class="sec">Project 2. Model the uncertainty, then decide</h2>
+  <div class="proj-card">
+    <span class="chapters">Chapters 2 to 5</span>
+    <h3>Fitting a distribution and using expectation to choose</h3>
+    <p class="tagline">A distribution is only useful if it changes what you do.</p>
+
+    <h4>The question</h4>
+    <p>Choose a quantity whose behaviour is uncertain, fit a probability
+      distribution to it, and use that model to make a decision with money, risk or
+      safety attached. Your recommendation must come from an expected value
+      calculation, not from opinion.</p>
+
+    <h4>What to do</h4>
+    <ol>
+      <li>Argue from the mechanism which distribution should apply before you look
+        at the fit. Counts of rare events, time to failure and a sum of many small
+        effects each point somewhere different.</li>
+      <li>Fit it. Compare the fitted curve against your data honestly.</li>
+      <li>Compute probabilities that matter: the chance of exceeding a threshold,
+        of failing before warranty, of a queue passing capacity.</li>
+      <li>Set up at least two courses of action with costs, and compute the
+        expected cost or benefit of each using Chapter 5.</li>
+      <li>Recommend one, and state the assumption that would most change your
+        answer if it were wrong.</li>
+    </ol>
+
+    <h4>Where to find your quantity</h4>
+    <div class="disc">
+      <b>Mechanical</b><span>Bearing life before failure; spare-part demand per month; time between breakdowns</span>
+      <b>Computer science</b><span>Requests arriving per minute; time between system faults; cache miss rate</span>
+      <b>Electrical</b><span>Outages per month on a feeder; transformer load peaks; component lifetime</span>
+      <b>Civil</b><span>Vehicle arrivals at a junction; daily rainfall against a drain's capacity; concrete strength against a specified minimum</span>
+      <b>Geological</b><span>Grade above a cut-off; blast fragment size; number of intersections above a threshold per hole</span>
+      <b>Geomatic</b><span>Residual errors in an adjustment; survey rework rate; time to fix a GNSS ambiguity</span>
+      <b>Environmental</b><span>Days exceeding a WHO air quality limit; spill events per year; effluent pH outside consent</span>
+    </div>
+
+    <div class="warn"><p><strong>The trap.</strong> Fitting a normal distribution
+      to everything. Failure times and event counts are usually not normal, and
+      forcing them there will give you a positive probability of a negative
+      lifetime. Notice that and explain it.</p></div>
+  </div>
+
+  <h2 class="sec">Project 3. Test a claim, and find a relationship</h2>
+  <div class="proj-card">
+    <span class="chapters">Chapters 7 and 8</span>
+    <h3>Hypothesis testing and regression on real data</h3>
+    <p class="tagline">Does the thing people say on site actually hold?</p>
+
+    <h4>The question</h4>
+    <p>Find a claim that people in your field repeat as though it were settled.
+      Test it. Then model how your outcome depends on something you can measure,
+      and say how much of the variation you have actually explained.</p>
+
+    <h4>What to do</h4>
+    <ol>
+      <li>State the claim, then write it as a null and an alternative hypothesis
+        before collecting data.</li>
+      <li>Choose the right test from Chapter 7 and justify it. Say what you assumed
+        and whether your data support the assumption.</li>
+      <li>Report the test statistic, the decision and what it means in plain
+        language. Do not write "significant" without saying significant of what.</li>
+      <li>Fit a regression relating your outcome to a predictor. Report the
+        coefficients, their interpretation in real units, and the correlation.</li>
+      <li>Plot the residuals and say what they show about the model.</li>
+      <li>State one thing your model must not be used for.</li>
+    </ol>
+
+    <h4>Claims worth testing</h4>
+    <div class="disc">
+      <b>Mechanical</b><span>"The new lubricant lowers running temperature"; does load predict wear rate?</span>
+      <b>Computer science</b><span>"The refactor made it faster"; does input size predict runtime?</span>
+      <b>Electrical</b><span>"Voltage is worse in the evening"; does load predict harmonic distortion?</span>
+      <b>Civil</b><span>"This mix is stronger than the old one"; does curing time predict strength?</span>
+      <b>Geological</b><span>"Grade is higher on the east side"; does depth predict density?</span>
+      <b>Geomatic</b><span>"Longer occupations give better fixes"; does baseline length predict error?</span>
+      <b>Environmental</b><span>"Air is worse near the highway"; does traffic count predict PM<sub>2.5</sub>?</span>
+    </div>
+
+    <div class="warn"><p><strong>The trap.</strong> Treating a strong correlation as
+      proof that one thing causes the other. Rainfall and ice-cream sales move
+      together too. If you cannot rule out a third factor, say which one worries
+      you.</p></div>
+  </div>
+
+  <h2 class="sec">The presentation</h2>
+  <p>Ten minutes, five for questions. Aim it at engineers in another programme:
+    if only your own class can follow it, it is too narrow.</p>
+  <ul>
+    <li>Open with the decision or question, not with your method.</li>
+    <li>One slide on how the data were collected. Be honest about what went wrong.</li>
+    <li>Show the data before you show the model.</li>
+    <li>Every member speaks, and should be able to answer on any part.</li>
+    <li>Finish with what you would do differently with twice the data.</li>
+  </ul>
+
+  <h2 class="sec">How it is marked</h2>
+  <table>
+    <tr><th>Component</th><th>Marks</th><th>What earns them</th></tr>
+    <tr><td>Problem and data</td><td class="num">20</td>
+      <td>A question worth asking, a population defined precisely, sampling justified, collection documented honestly</td></tr>
+    <tr><td>Statistical work</td><td class="num">30</td>
+      <td>Right method for the question, assumptions stated and checked, calculations correct</td></tr>
+    <tr><td>Interpretation</td><td class="num">25</td>
+      <td>What the numbers mean in engineering terms, limits acknowledged, a decision actually reached</td></tr>
+    <tr><td>Report</td><td class="num">10</td>
+      <td>Clear structure, readable figures with labelled axes, sources cited</td></tr>
+    <tr><td>Presentation</td><td class="num">15</td>
+      <td>Clarity, timing, and how the group handles questions</td></tr>
+  </table>
+  <p style="margin-top:14px"><strong>Marks are awarded to the group</strong>, except
+    where questioning shows a member cannot explain the work they are credited with.</p>
+
+  <h2 class="sec">Data honesty</h2>
+  <p>Submit the data you actually collected. A small, messy, honestly described
+    dataset scores better than a clean invented one, and invented data is usually
+    obvious: it is too well behaved. If a measurement went wrong, keep it in and
+    explain it. If you use a published dataset, cite it and say who collected it
+    and why.</p>
+
+  <h2 class="sec">What to hand in</h2>
+  <ul>
+    <li>Report as a single PDF, 8 to 12 pages including figures.</li>
+    <li>Your data as a spreadsheet or CSV.</li>
+    <li>Any code you wrote.</li>
+    <li>Slides as a PDF.</li>
+    <li>A one-line statement of who did what, signed by every member.</li>
+  </ul>
+  <p>Upload through the submission link on the course page. Do not email your work.</p>
+
+</main>
+</body>
+</html>

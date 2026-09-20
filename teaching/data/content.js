@@ -221,12 +221,39 @@ window.SITE = {
 
       /* Coursework projects. Same fields as assignments. */
       projects: [
-        // {
-        //   id: "P1", title: "Group project",
-        //   due: "2026-11-14", dueTime: "23:59", points: 30,
-        //   description: "What the project asks for, and how groups are formed.",
-        //   files: [{ label: "Project brief", path: "files/assignments/<course>/P1-brief.pdf" }],
-        // },
+        {
+          id: "P1", title: "Measure something, and say how sure you are",
+          due: "", dueTime: "23:59", points: 100,
+          description: "Chapters 1 and 6. Choose a quantity in your field that " +
+            "varies, sample it properly, describe how it varies, and give a " +
+            "confidence interval for its true mean or proportion. Then say what " +
+            "that interval means for a real engineering decision.",
+          files: [
+            { label: "Full brief (all three projects)", path: "files/assignments/prob-stats/ps361-group-projects.pdf" },
+          ],
+        },
+        {
+          id: "P2", title: "Model the uncertainty, then decide",
+          due: "", dueTime: "23:59", points: 100,
+          description: "Chapters 2 to 5. Fit a probability distribution to an " +
+            "uncertain quantity, argued from the mechanism rather than picked by " +
+            "habit, then use expected value to choose between at least two " +
+            "courses of action with costs attached.",
+          files: [
+            { label: "Full brief (all three projects)", path: "files/assignments/prob-stats/ps361-group-projects.pdf" },
+          ],
+        },
+        {
+          id: "P3", title: "Test a claim, and find a relationship",
+          due: "", dueTime: "23:59", points: 100,
+          description: "Chapters 7 and 8. Take a claim people in your field " +
+            "repeat as settled and test it properly, then fit a regression " +
+            "relating your outcome to something you can measure and report how " +
+            "much variation it actually explains.",
+          files: [
+            { label: "Full brief (all three projects)", path: "files/assignments/prob-stats/ps361-group-projects.pdf" },
+          ],
+        },
       ],
 
       /* Results. READ SECTION 8 AT THE BOTTOM OF THIS FILE FIRST.
@@ -238,7 +265,14 @@ window.SITE = {
       },
 
       /* Housekeeping notes shown near the top of the course page. */
-      instructions: [],
+      instructions: [
+        "Group projects are open. You choose the question and collect your own data; " +
+        "read the full brief before forming a group.",
+        "Groups of five or six. Every member presents, and every member should be " +
+        "able to explain any part of the work.",
+        "Minimum 30 observations. Submit the data you actually collected, not a tidy " +
+        "invention: made-up data is usually obvious because it behaves too well.",
+      ],
 
       submission: null,
     },
