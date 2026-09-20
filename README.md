@@ -9,11 +9,11 @@ Live at <https://zeidyen.github.io/>
 
 | Path | What it is |
 |---|---|
-| `index.html` | Front page — about, skills, work experience, contact |
+| `index.html` | Front page, about, skills, work experience, contact |
 | `software.html` | Publications |
 | `webdev.html` | Machine learning projects |
 | `cp.html` | Programming profile |
-| `teaching/` | **Course materials for students** — see `teaching/README.md` |
+| `teaching/` | **Course materials for students**, see `teaching/README.md` |
 
 ## Course materials
 

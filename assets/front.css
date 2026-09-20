@@ -101,7 +101,7 @@
 }
 
 /* ===================================================================
-   Scroll reveal — the fade-in the old template had, rebuilt on
+   Scroll reveal: the fade-in the old template had, rebuilt on
    IntersectionObserver. The .js-reveal gate means that if JavaScript
    never runs, nothing is ever hidden.
    =================================================================== */

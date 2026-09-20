@@ -1,5 +1,5 @@
 /* ============================================================================
-   CONTENT.JS  —  THIS IS THE ONLY FILE YOU NEED TO EDIT.
+   CONTENT.JS: THIS IS THE ONLY FILE YOU NEED TO EDIT.
    ----------------------------------------------------------------------------
    Everything on the website comes from this file: your details, your courses,
    your lecture notes and assignments, and your research papers.
@@ -32,7 +32,7 @@ window.SITE = {
          "where I teach mathematical analysis, probability and statistics. " +
          "My research runs in two directions. I build new families of " +
          "probability distributions and study the estimators that fit them; " +
-         "and I apply those methods to health data across Ghana — malaria " +
+         "and I apply those methods to health data across Ghana: malaria " +
          "burden, air quality, cancer survival and mental health. I care most " +
          "about the point where the mathematics has to survive contact with " +
          "messy, real data. This site is where my students find lecture notes " +
@@ -53,7 +53,7 @@ window.SITE = {
   },
 
   /* ======================================================================
-     2. ANNOUNCEMENTS  (newest first — shown on the front page)
+     2. ANNOUNCEMENTS  (newest first; shown on the front page)
      Use "course" to tag it to one course, or leave it "" for everyone.
      ====================================================================== */
   announcements: [
@@ -71,7 +71,7 @@ window.SITE = {
      ----------------------------------------------------------------------
      Each course gets its own page. To add a fifth course, copy one whole
      block from { to }, and give it a new "id" (lowercase, no spaces).
-     Set "active" to false for a course you are not teaching this term —
+     Set "active" to false for a course you are not teaching this term;
      it stays on the site but is listed under "Previously taught".
      ====================================================================== */
   courses: [
@@ -178,8 +178,8 @@ window.SITE = {
       "deriving new families of probability distributions, establishing their " +
       "mathematical properties, and testing how well maximum likelihood " +
       "recovers their parameters in simulation. The second is applied " +
-      "biostatistics in Ghana — malaria burden, air quality, cancer survival " +
-      "and mental health — where those models meet real data.",
+      "biostatistics in Ghana, where those models meet real data on malaria " +
+      "burden, air quality, cancer survival and mental health.",
 
     interests: [
       "New families of probability distributions",
@@ -191,7 +191,7 @@ window.SITE = {
 
     // Taken from your CV (ABDULZEID YEN ANAFO_Resume.pdf), newest first.
     // NOTE: the CV writes your name both as "Anafo, Y. A." and "Anafo, A. Y.".
-    // Normalised to A. Y. Anafo here — correct it if the other is right.
+    // Normalised to A. Y. Anafo here; correct it if the other is right.
     /* Verified against ORCID 0000-0002-9399-8839 and Crossref,
        September 2026. Every entry carries a resolvable DOI except the
        last, which is not indexed anywhere I could find.
