@@ -348,7 +348,7 @@
       html += '<p><a class="btn" href="' + esc(sub.url) +
               '" target="_blank" rel="noopener">Open the submission form</a></p>';
     } else if (sub.email) {
-      var subj = encodeURIComponent(courseLabel(c) + " — assignment submission");
+      var subj = encodeURIComponent(courseLabel(c) + ": assignment submission");
       html += '<p><a class="btn" href="mailto:' + esc(sub.email) + "?subject=" + subj +
               '">Submit by email</a></p>';
     }
