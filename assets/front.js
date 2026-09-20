@@ -29,7 +29,7 @@
 
   // Items that animate, in document order. Cards alternate left/right the way
   // the old page did; headings and wide blocks rise from below.
-  var SIDE = ".tile, .stat, .pub, .proj, .hl, .ccard, .contact-card";
+  var SIDE = ".tile, .stat, .pub, .proj, .dash, .hl, .ccard, .contact-card";
   var UP   = "main > h2.sec-h, .hero-split, main > .lede, .chips, .linkrow, .minihead, .yr-group";
 
   var nodes = Array.prototype.slice.call(document.querySelectorAll(SIDE + ", " + UP));

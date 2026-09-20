@@ -145,3 +145,26 @@ html{scroll-behavior:smooth}
   .tile,.proj{transition:none}
   .tile:hover,.proj:hover{transform:none}
 }
+
+/* ------------------------------------------------------------ dashboards */
+.dashgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:12px; margin-bottom:8px}
+.dash{
+  background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+  border-top:3px solid var(--accent); padding:17px 18px 16px; box-shadow:var(--shadow);
+  display:flex; flex-direction:column;
+  transition:transform .13s ease, border-color .13s ease;
+}
+.dash:hover{transform:translateY(-2px)}
+.dash-meta{
+  margin:0 0 7px; font:600 .66rem/1.4 var(--sans); letter-spacing:.07em;
+  text-transform:uppercase; color:var(--ink-3);
+}
+.dash h3{margin:0; font:600 1.08rem/1.3 var(--serif)}
+.dash-desc{margin:.6rem 0 0; font-size:.88rem; color:var(--ink-2); flex:1}
+.dash .files{margin-top:14px}
+.file.primary{background:var(--accent); border-color:var(--accent); color:#fff}
+.file.primary .ext{background:rgba(255,255,255,.22); color:#fff}
+.file.primary:hover{filter:brightness(1.08); color:#fff}
+:root[data-theme="dark"] .file.primary{color:#16151a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .file.primary{color:#16151a}}
+@media (prefers-reduced-motion:reduce){.dash{transition:none} .dash:hover{transform:none}}
