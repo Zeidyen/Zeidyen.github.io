@@ -117,6 +117,27 @@ window.SITE = {
       ],
 
       // Leave this out of a course to fall back on the site-wide default below.
+      /* Coursework projects. Same fields as assignments. */
+      projects: [
+        // {
+        //   id: "P1", title: "Group project",
+        //   due: "2026-11-14", dueTime: "23:59", points: 30,
+        //   description: "What the project asks for, and how groups are formed.",
+        //   files: [{ label: "Project brief", path: "files/assignments/<course>/P1-brief.pdf" }],
+        // },
+      ],
+
+      /* Results. READ SECTION 8 AT THE BOTTOM OF THIS FILE FIRST.
+         Put a link to a private, signed-in lookup here.
+         Never put marks in this file: everything in it is public. */
+      results: {
+        url:  "",
+        note: "",
+      },
+
+      /* Housekeeping notes shown near the top of the course page. */
+      instructions: [],
+
       submission: null,
     },
 
@@ -124,9 +145,10 @@ window.SITE = {
       id:     "prob-stats",
       code:   "CE/EL/ME/GL/GM/ES 361",
       title:  "Probability and Statistics",
-      term:   "EDIT ME: e.g. Semester 1, 2026/2027",
-      level:  "EDIT ME: e.g. Second year engineering",
-      active: true,
+      term:    "First Semester, 2025/2026",
+      level:   "EDIT ME: e.g. Second year engineering",
+      active:  true,
+      current: true,
       description:
         "The mathematics of uncertainty for engineers. Every measurement you " +
         "take carries error and variation, and an engineer who cannot quantify " +
@@ -197,20 +219,66 @@ window.SITE = {
           path:  "files/lectures/prob-stats/ps361-full-lecture-notes.pdf" },
       ],
 
+      /* Coursework projects. Same fields as assignments. */
+      projects: [
+        // {
+        //   id: "P1", title: "Group project",
+        //   due: "2026-11-14", dueTime: "23:59", points: 30,
+        //   description: "What the project asks for, and how groups are formed.",
+        //   files: [{ label: "Project brief", path: "files/assignments/<course>/P1-brief.pdf" }],
+        // },
+      ],
+
+      /* Results. READ SECTION 8 AT THE BOTTOM OF THIS FILE FIRST.
+         Put a link to a private, signed-in lookup here.
+         Never put marks in this file: everything in it is public. */
+      results: {
+        url:  "",
+        note: "",
+      },
+
+      /* Housekeeping notes shown near the top of the course page. */
+      instructions: [],
+
       submission: null,
     },
 
     {
-      id:     "prob-theory",
-      code:   "EDIT ME: e.g. STAT 401",
-      title:  "Probability Theory",
-      term:   "EDIT ME: e.g. Semester 2, 2026/2027",
-      level:  "EDIT ME: e.g. Final year / MSc",
-      active: true,
+      id:      "prob-theory",
+      code:    "MF 281",
+      title:   "Probability Theory",
+      term:    "First Semester, 2025/2026",
+      level:   "EDIT ME: e.g. Second year",
+      active:  true,
+      current: true,
       description:  "EDIT ME: what this course covers.",
       meetingTimes: "EDIT ME: days and times",
       location:     "EDIT ME: room",
-      lectures: [], assignments: [], resources: [], submission: null,
+      lectures: [],
+      assignments: [],
+      resources: [],
+      /* Coursework projects. Same fields as assignments. */
+      projects: [
+        // {
+        //   id: "P1", title: "Group project",
+        //   due: "2026-11-14", dueTime: "23:59", points: 30,
+        //   description: "What the project asks for, and how groups are formed.",
+        //   files: [{ label: "Project brief", path: "files/assignments/<course>/P1-brief.pdf" }],
+        // },
+      ],
+
+      /* Results. READ SECTION 8 AT THE BOTTOM OF THIS FILE FIRST.
+         Put a link to a private, signed-in lookup here.
+         Never put marks in this file: everything in it is public. */
+      results: {
+        url:  "",
+        note: "",
+      },
+
+      /* Housekeeping notes shown near the top of the course page. */
+      instructions: [],
+
+      submission: null,
     },
 
     {
@@ -223,7 +291,31 @@ window.SITE = {
       description:  "EDIT ME: what this course covers.",
       meetingTimes: "EDIT ME: days and times",
       location:     "EDIT ME: room",
-      lectures: [], assignments: [], resources: [], submission: null,
+      lectures: [],
+      assignments: [],
+      resources: [],
+      /* Coursework projects. Same fields as assignments. */
+      projects: [
+        // {
+        //   id: "P1", title: "Group project",
+        //   due: "2026-11-14", dueTime: "23:59", points: 30,
+        //   description: "What the project asks for, and how groups are formed.",
+        //   files: [{ label: "Project brief", path: "files/assignments/<course>/P1-brief.pdf" }],
+        // },
+      ],
+
+      /* Results. READ SECTION 8 AT THE BOTTOM OF THIS FILE FIRST.
+         Put a link to a private, signed-in lookup here.
+         Never put marks in this file: everything in it is public. */
+      results: {
+        url:  "",
+        note: "",
+      },
+
+      /* Housekeeping notes shown near the top of the course page. */
+      instructions: [],
+
+      submission: null,
     },
 
   ],
@@ -548,18 +640,53 @@ window.SITE = {
      Used by every course unless that course sets its own "submission".
      ====================================================================== */
   submission: {
-    method: "Email",
-    email:  "ayanafo@umat.edu.gh",
-    url:    "",   // a Google Form or LMS link, if you prefer that to email
+    method: "Online submission link",
+
+    // EDIT ME: paste your submission link here (Google Form, Microsoft Form,
+    // Moodle assignment, Dropbox File Request - anything that accepts uploads).
+    // Until this is filled in, the course page tells students it is coming.
+    url: "",
+
+    // Not for submitting work. Shown as the address for problems only.
+    email: "ayanafo@umat.edu.gh",
+
     steps: [
-      "Write your full name, student ID and the assignment number at the top of the first page.",
-      "Save your work as a single PDF named  SURNAME_FirstName_COURSE_A1.pdf",
-      "Email it with the course code and assignment number as the subject line.",
-      "You will get a reply confirming receipt. If you do not, your work was not received.",
+      "Write your full name, index number and the assignment number at the top of the first page.",
+      "Save your work as a single PDF named  INDEXNUMBER_SURNAME_A1.pdf",
+      "Open the submission link on this page and upload the file there.",
+      "Check that you see the confirmation screen. If you do not, your work was not received.",
     ],
+
+    // Shown under the submission button.
+    problems: "Do not email your work: it will not be marked. If the link " +
+              "will not load, or you cannot upload before the deadline, email " +
+              "me and say what went wrong.",
+
     latePolicy:
       "Late submissions lose 10% per day and are not accepted more than three " +
       "days after the deadline, except with prior written permission.",
   },
 
+  /* ======================================================================
+     8. A NOTE ABOUT RESULTS
+
+     This website is PUBLIC. Every file in it, this one included, can be read
+     by anyone with the address, and GitHub keeps a copy of everything you
+     have ever pushed even after you delete it.
+
+     A static site cannot keep a secret. If marks were stored here, a lookup
+     box asking for an index number would not protect them: the whole table
+     would already be in the page, and anyone could read it by viewing source.
+     Index numbers are not passwords either - they are printed on class lists
+     and shared freely between students.
+
+     So: never put marks, grades or student names anywhere in this repository.
+
+     Put results behind a sign-in instead, and paste that link into the
+     "results.url" field of each course above. Options, cheapest first:
+       - Google Sheets shared with "anyone at umat.edu.gh can view", filtered
+         per student with a Google Apps Script web app
+       - Your university's LMS gradebook
+       - A Google Form that emails each student their own result
+     ====================================================================== */
 };

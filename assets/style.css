@@ -265,3 +265,24 @@ a.chip:hover{border-color:var(--accent); color:var(--accent)}
 .footback{margin:0 0 10px}
 .footback a{font-size:.87rem; text-decoration:none; font-weight:500}
 .footback a:hover{text-decoration:underline}
+
+/* ----------------------------------------------------- course housekeeping */
+.notice{
+  background:var(--accent-soft); border-left:3px solid var(--accent);
+  border-radius:8px; padding:14px 16px; margin-bottom:6px;
+}
+.notice h3{
+  margin:0 0 8px; font:600 .72rem/1 var(--sans); letter-spacing:.09em;
+  text-transform:uppercase; color:var(--accent);
+}
+.notice ul{margin:0; padding-left:1.15em; font-size:.9rem; color:var(--ink-2)}
+.notice li{margin:.2em 0}
+
+/* "this semester" marker on a course tile */
+.ccard{position:relative}
+.ccard.now{border-left-width:4px}
+.ccard-now{
+  display:inline-block; margin-bottom:8px; padding:3px 9px; border-radius:999px;
+  background:var(--ok-soft); color:var(--ok);
+  font:600 .64rem/1.5 var(--sans); letter-spacing:.05em; text-transform:uppercase;
+}

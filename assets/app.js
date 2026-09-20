@@ -143,7 +143,8 @@
     counts.push(lec ? lec + (lec === 1 ? " lecture" : " lectures") : "No notes yet");
     if (asg) counts.push(open ? open + " open" : asg + " closed");
 
-    return '<a class="ccard" href="#course/' + esc(c.id) + '">' +
+    return '<a class="ccard' + (c.current ? " now" : "") + '" href="#course/' + esc(c.id) + '">' +
+      (c.current ? '<span class="ccard-now">This semester</span>' : "") +
       (filled(c.code) ? '<span class="ccard-code">' + esc(c.code) + "</span>" : "") +
       "<h3>" + esc(c.title) + "</h3>" +
       (filled(c.term)  ? '<p class="ccard-term">' + esc(c.term) + "</p>" : "") +
@@ -335,6 +336,35 @@
         }).join("")
       : emptyBox("No extra resources for this course yet.");
 
+    // instructions
+    var ins = (c.instructions || []).filter(filled);
+    $("cInstructions").innerHTML = ins.length
+      ? '<div class="notice"><h3>Before you start</h3><ul>' +
+        ins.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") +
+        "</ul></div>"
+      : "";
+
+    // projects use the same card and the same deadline logic as assignments
+    var projs = (c.projects || []).slice().sort(function (a, b) {
+      var x = toDate(a.due, a.dueTime), y = toDate(b.due, b.dueTime);
+      if (!x) return 1;
+      if (!y) return -1;
+      return x - y;
+    });
+    $("cProjects").innerHTML = projs.length
+      ? projs.map(function (a) { return assignmentCard(a, ""); }).join("")
+      : emptyBox("No projects set for this course yet.");
+
+    // results: a link out to a signed-in lookup, never marks held on this site
+    var res = c.results || {};
+    $("cResults").innerHTML = res.url
+      ? (res.note ? "<p>" + esc(res.note) + "</p>" : "") +
+        '<p><a class="btn" href="' + esc(res.url) + '" target="_blank" rel="noopener">' +
+        "Check your results</a></p>" +
+        '<p class="note">You will be asked to sign in with your university ' +
+        "account. Results are not published on this page.</p>"
+      : emptyBox("Results for this course have not been released yet.");
+
     // submission: course-specific if given, otherwise the site default
     var sub = c.submission || S.submission || {};
     var html = "";
@@ -346,11 +376,18 @@
     }
     if (sub.url) {
       html += '<p><a class="btn" href="' + esc(sub.url) +
-              '" target="_blank" rel="noopener">Open the submission form</a></p>';
-    } else if (sub.email) {
-      var subj = encodeURIComponent(courseLabel(c) + ": assignment submission");
-      html += '<p><a class="btn" href="mailto:' + esc(sub.email) + "?subject=" + subj +
-              '">Submit by email</a></p>';
+              '" target="_blank" rel="noopener">Open the submission link</a></p>';
+    } else {
+      html += '<p class="empty">The submission link for this course has not ' +
+              "been posted yet. Check back before the deadline.</p>";
+    }
+    if (sub.problems) {
+      var subj = encodeURIComponent(courseLabel(c) + ": problem with submission");
+      html += '<p class="note"><strong>Trouble submitting?</strong> ' + esc(sub.problems) +
+              (sub.email
+                ? ' <a href="mailto:' + esc(sub.email) + "?subject=" + subj + '">' +
+                  esc(sub.email) + "</a>"
+                : "") + "</p>";
     }
     if (sub.latePolicy) html += '<p class="note"><strong>Late work.</strong> ' + esc(sub.latePolicy) + "</p>";
     $("cSubmit").innerHTML = html || emptyBox("Submission instructions coming soon.");
