@@ -172,10 +172,12 @@ window.SITE = {
      ====================================================================== */
   research: {
     summary:
-      "I work on new families of probability distributions — deriving their " +
-      "mathematical properties, estimating their parameters by maximum " +
-      "likelihood, and testing how well that estimation behaves in simulation " +
-      "before applying the models to real data.",
+      "My work runs in two directions. The first is distribution theory: " +
+      "deriving new families of probability distributions, establishing their " +
+      "mathematical properties, and testing how well maximum likelihood " +
+      "recovers their parameters in simulation. The second is applied " +
+      "biostatistics in Ghana — malaria burden, air quality, cancer survival " +
+      "and mental health — where those models meet real data.",
 
     interests: [
       "New families of probability distributions",
