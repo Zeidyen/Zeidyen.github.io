@@ -350,7 +350,12 @@
               "<h3>" + esc(l.title) + "</h3><p>" + esc(l.text) + "</p></div></article>";
           }).join("") + "</div>"
         : "") +
-      (w.closing ? '<p class="welcome-close reveal">' + esc(w.closing) + "</p>" : "");
+      (w.closing ? '<p class="welcome-close reveal">' + esc(w.closing) + "</p>" : "") +
+      (c.tutor && filled(c.tutor.url)
+        ? '<aside class="tutor-cta reveal"><div><h3>Ask the course tutor</h3>' +
+          (c.tutor.note ? "<p>" + esc(c.tutor.note) + "</p>" : "") + "</div>" +
+          '<a class="btn" href="' + esc(c.tutor.url) + '" target="_blank" rel="noopener">Open the tutor</a></aside>'
+        : "");
 
     revealOnScroll(box);
     galton = startGalton(box.querySelector(".galton"));
