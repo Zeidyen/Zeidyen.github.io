@@ -208,6 +208,16 @@ window.SITE = {
                  "room who asks: how sure are we, and how do we know?",
       },
 
+      /* AI course tutor (a Google Apps Script web app; code in ~/course-tutor).
+         Paste its web-app URL here to show the "Ask the course tutor" panel.
+         Leave url empty to hide it. */
+      tutor: {
+        url:  "",
+        note: "Stuck on a concept, or want your working checked? The tutor answers " +
+              "from the lecture notes. Sign in with your UMaT Google account. It " +
+              "guides you to answers rather than doing assessed work for you.",
+      },
+
       lectures: [
         {
           week: 1, date: "", title: "Introduction to Statistics",
