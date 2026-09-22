@@ -286,3 +286,91 @@ a.chip:hover{border-color:var(--accent); color:var(--accent)}
   background:var(--ok-soft); color:var(--ok);
   font:600 .64rem/1.5 var(--sans); letter-spacing:.05em; text-transform:uppercase;
 }
+
+/* ---------------------------------------------------------------- welcome */
+.welcome{
+  display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:26px; align-items:center;
+  background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:24px 24px 20px; margin:0 0 22px;
+  position:relative; overflow:hidden;
+}
+.welcome::before{
+  content:""; position:absolute; inset:0 0 auto 0; height:3px;
+  background:linear-gradient(90deg,var(--accent),transparent);
+}
+.welcome-kicker{
+  font:600 .72rem/1 var(--sans); letter-spacing:.09em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 .7rem;
+  animation:welcome-up .6s ease both;
+}
+.welcome-h{
+  font:600 clamp(1.3rem,1rem + 1.3vw,1.7rem)/1.25 var(--serif); margin:0 0 .8rem;
+  animation:welcome-up .6s .1s ease both;
+}
+.welcome-h .hl{
+  background:linear-gradient(var(--accent-soft),var(--accent-soft)) no-repeat 0 88%/0% .42em;
+  background-image:linear-gradient(color-mix(in srgb,var(--accent) 26%,transparent),color-mix(in srgb,var(--accent) 26%,transparent));
+  animation:welcome-hl 1.1s .7s ease forwards;
+}
+.welcome-text p{color:var(--ink-2); margin:0 0 .8rem; font-size:.95rem}
+.welcome-text p:nth-of-type(2){animation:welcome-up .6s .2s ease both}
+.welcome-text p:nth-of-type(3){animation:welcome-up .6s .3s ease both}
+.galton{margin:0}
+.galton canvas{display:block; width:100%; height:300px}
+.galton figcaption{
+  display:flex; justify-content:space-between; align-items:center; gap:10px;
+  font-size:.78rem; color:var(--ink-3); margin-top:6px; font-variant-numeric:tabular-nums;
+}
+.galton-btn{
+  font:500 .78rem/1 var(--sans); color:var(--ink-2); cursor:pointer;
+  background:transparent; border:1px solid var(--line-2); border-radius:7px; padding:6px 10px;
+}
+.galton-btn:hover{color:var(--ink); background:var(--bg)}
+
+.learn{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px; margin-bottom:6px}
+.learn-card{
+  display:flex; gap:13px; align-items:flex-start;
+  background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 16px; box-shadow:var(--shadow);
+  transition:transform .2s ease, border-color .2s ease;
+}
+.learn-card:hover{transform:translateY(-2px); border-color:var(--line-2)}
+.learn-card h3{font:600 1rem/1.3 var(--serif); margin:0 0 .3rem}
+.learn-card p{margin:0; font-size:.88rem; color:var(--ink-2)}
+.learn-card .learn-ch{
+  font:600 .66rem/1 var(--sans); letter-spacing:.08em; text-transform:uppercase;
+  color:var(--ink-3); margin-bottom:.45rem;
+}
+.learn-icon{
+  flex:none; width:40px; height:40px; padding:6px; border-radius:10px;
+  background:var(--accent-soft); color:var(--accent);
+  fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;
+}
+.learn-icon .pop{fill:currentColor; stroke:none}
+.welcome-close{
+  font:italic 500 1.05rem/1.5 var(--serif); color:var(--ink); text-align:center;
+  max-width:52ch; margin:22px auto 8px;
+}
+
+/* scroll reveal: cards rise in one after another, then their icons draw */
+.reveal{opacity:0; transform:translateY(14px); transition:opacity .55s ease, transform .55s ease}
+.learn-card.reveal{transition-delay:calc(var(--i,0) * 70ms)}
+.reveal.in{opacity:1; transform:none}
+.learn-icon .draw{stroke-dasharray:1; stroke-dashoffset:1}
+.learn-icon .pop{opacity:0; transform:scale(.3); transform-box:fill-box; transform-origin:center}
+.in .learn-icon .draw{transition:stroke-dashoffset .9s ease calc(var(--i,0) * 70ms + .25s); stroke-dashoffset:0}
+.in .learn-icon .pop{transition:opacity .3s ease calc(var(--i,0) * 70ms + .8s), transform .3s ease calc(var(--i,0) * 70ms + .8s); opacity:1; transform:none}
+.learn-card.in:hover{transition-delay:0s}
+
+@keyframes welcome-up{from{opacity:0; transform:translateY(10px)}to{opacity:1; transform:none}}
+@keyframes welcome-hl{to{background-size:100% .42em}}
+
+@media (max-width:680px){
+  .welcome{grid-template-columns:1fr; padding:20px 18px 16px; gap:14px}
+  .learn{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .welcome-kicker,.welcome-h,.welcome-text p{animation:none}
+  .welcome-h .hl{animation:none; background-size:100% .42em}
+  .reveal,.learn-card,.learn-icon .draw,.learn-icon .pop{transition:none}
+}
