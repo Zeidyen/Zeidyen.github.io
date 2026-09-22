@@ -158,6 +158,56 @@ window.SITE = {
       meetingTimes: "EDIT ME: days and times",
       location:     "EDIT ME: room",
 
+      /* Welcome panel at the top of the course page, with the animated
+         Galton board. Leave it out of a course to show no welcome. */
+      welcome: {
+        kicker:   "Hey, welcome",
+        headline: "Welcome to the world of statistical thinking",
+        body: [
+          "I am glad you are here. Statistics is not a pile of formulas to " +
+          "memorise the night before the exam. It is a way of thinking about " +
+          "any number that comes with uncertainty, and in engineering that is " +
+          "almost every number.",
+          "Watch the board. Each ball bounces left or right at random, and " +
+          "nobody can tell you where a single ball will land. Yet together " +
+          "they build the same shape every time. Predicting the pattern while " +
+          "each individual stays unpredictable: that is what this course is about.",
+        ],
+        learnTitle: "Throughout this course you will learn to",
+        learn: [
+          { icon: "bars",    chapters: "Chapter 1",
+            title: "Describe data honestly",
+            text:  "Summarise measurements with the right average and the right " +
+                   "spread, and notice when a single number is misleading you." },
+          { icon: "dice",    chapters: "Chapter 2",
+            title: "Reason about chance",
+            text:  "Use the rules of probability, conditional probability and " +
+                   "Bayes’ rule, and count outcomes without listing them all." },
+          { icon: "bell",    chapters: "Chapters 3 and 4",
+            title: "Model uncertainty",
+            text:  "Describe random quantities with distributions: binomial for " +
+                   "defects, Poisson for breakdowns, normal for measurement error." },
+          { icon: "scale",   chapters: "Chapter 5",
+            title: "Weigh risky choices",
+            text:  "Use expected value and variance to compare options that carry " +
+                   "both cost and risk." },
+          { icon: "range",   chapters: "Chapter 6",
+            title: "Estimate with confidence",
+            text:  "Go from a sample to a range for the truth, and say exactly how " +
+                   "sure you are." },
+          { icon: "test",    chapters: "Chapter 7",
+            title: "Test a claim",
+            text:  "Decide whether a supplier’s figure, or a colleague’s " +
+                   "hunch, stands up to the data." },
+          { icon: "scatter", chapters: "Chapter 8",
+            title: "Find relationships",
+            text:  "Fit a line relating two quantities and report how much of the " +
+                   "variation it really explains." },
+        ],
+        closing: "By the end of the semester I want you to be the engineer in the " +
+                 "room who asks: how sure are we, and how do we know?",
+      },
+
       lectures: [
         {
           week: 1, date: "", title: "Introduction to Statistics",
