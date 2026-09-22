@@ -217,6 +217,17 @@ window.SITE = {
           note:  "All eight chapters in one file, 131 pages, 5.8 MB. The chapter " +
                  "files above are smaller if you are on mobile data.",
           path:  "files/lectures/prob-stats/ps361-full-lecture-notes.pdf" },
+        { title: "Past examination questions",
+          note:  "End-of-semester papers from 2023 to 2026, newest first. Question " +
+                 "papers only, no answers. In 2026 the class sat two papers, one " +
+                 "for CE/EL/MC and one for GM/CV/ES/GL; try both.",
+          files: [
+            { label: "April 2026, CE/EL/MC (10 pp)",    path: "files/resources/prob-stats/ps361-exam-2026-april-ce-el-mc.pdf" },
+            { label: "April 2026, GM/CV/ES/GL (10 pp)", path: "files/resources/prob-stats/ps361-exam-2026-april-gm-cv-es-gl.pdf" },
+            { label: "April 2025 (10 pp)",              path: "files/resources/prob-stats/ps361-exam-2025-april.pdf" },
+            { label: "April 2024 (9 pp)",               path: "files/resources/prob-stats/ps361-exam-2024-april.pdf" },
+            { label: "April 2023 (8 pp)",               path: "files/resources/prob-stats/ps361-exam-2023-april.pdf" },
+          ] },
       ],
 
       /* Coursework projects. Same fields as assignments. */

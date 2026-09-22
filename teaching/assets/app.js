@@ -327,7 +327,7 @@
           return '<article class="card"><div class="card-head"><div class="card-title"><h3>' +
             esc(r.title) + "</h3>" +
             (r.note ? '<p class="card-meta">' + esc(r.note) + "</p>" : "") + "</div></div>" +
-            (href
+            (r.files ? fileLinks(r.files) : href
               ? '<div class="files"><a class="file" href="' + esc(href) + '"' +
                 (external ? ' target="_blank" rel="noopener"' : "") + ">" +
                 '<span class="ext">' + (external ? "LINK" : esc(extOf(href))) + "</span>" +
