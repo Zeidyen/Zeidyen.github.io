@@ -387,6 +387,37 @@ window.SITE = {
     },
 
     {
+      id:      "stat-thinking-ds",
+      code:    "",                       // no course code yet
+      title:   "Statistical Thinking for Data Science",
+      term:    "First Semester, 2025/2026",
+      level:   "EDIT ME: e.g. Fourth year",
+      active:  true,
+      current: true,
+      description:  "EDIT ME: what this course covers.",
+      meetingTimes: "EDIT ME: days and times",
+      location:     "EDIT ME: room",
+      lectures: [],
+      assignments: [],
+      resources: [],
+      /* Coursework projects. Same fields as assignments. */
+      projects: [],
+
+      /* Results. READ SECTION 8 AT THE BOTTOM OF THIS FILE FIRST.
+         Put a link to a private, signed-in lookup here.
+         Never put marks in this file: everything in it is public. */
+      results: {
+        url:  "",
+        note: "",
+      },
+
+      /* Housekeeping notes shown near the top of the course page. */
+      instructions: [],
+
+      submission: null,
+    },
+
+    {
       id:     "time-series",
       code:   "EDIT ME: e.g. STAT 412",
       title:  "Time Series Analysis",
