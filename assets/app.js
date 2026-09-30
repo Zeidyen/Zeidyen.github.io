@@ -321,13 +321,16 @@
   function drawWelcome(c) {
     if (galton) { galton.stop(); galton = null; }
     var w = c.welcome, box = $("cWelcome");
-    if (!w) { box.innerHTML = ""; return; }
+    if (!w && !ctaHtml(c)) { box.innerHTML = ""; return; }
 
-    var head = esc(w.headline || "");
-    var hl = "statistical thinking";
-    if (head.indexOf(hl) !== -1) head = head.replace(hl, '<span class="hl">' + hl + "</span>");
+    var head = "";
+    if (w) {
+      head = esc(w.headline || "");
+      var hl = "statistical thinking";
+      if (head.indexOf(hl) !== -1) head = head.replace(hl, '<span class="hl">' + hl + "</span>");
+    }
 
-    box.innerHTML =
+    box.innerHTML = (!w ? "" :
       '<section class="welcome">' +
         '<div class="welcome-text">' +
           (w.kicker ? '<p class="welcome-kicker">' + esc(w.kicker) + "</p>" : "") +
@@ -350,15 +353,27 @@
               "<h3>" + esc(l.title) + "</h3><p>" + esc(l.text) + "</p></div></article>";
           }).join("") + "</div>"
         : "") +
-      (w.closing ? '<p class="welcome-close reveal">' + esc(w.closing) + "</p>" : "") +
-      (c.tutor && filled(c.tutor.url)
-        ? '<aside class="tutor-cta reveal"><div><h3>Ask the course tutor</h3>' +
-          (c.tutor.note ? "<p>" + esc(c.tutor.note) + "</p>" : "") + "</div>" +
-          '<a class="btn" href="' + esc(c.tutor.url) + '" target="_blank" rel="noopener">Open the tutor</a></aside>'
-        : "");
+      (w.closing ? '<p class="welcome-close reveal">' + esc(w.closing) + "</p>" : "")
+    ) + ctaHtml(c);
 
     revealOnScroll(box);
-    galton = startGalton(box.querySelector(".galton"));
+    if (w) galton = startGalton(box.querySelector(".galton"));
+  }
+
+  // Panels under the welcome: the AI tutor, and the class survey. Each appears
+  // only once its url is filled in, so a course without them shows nothing.
+  function ctaHtml(c) {
+    return [
+      [c.tutor,  "Ask the course tutor", "Open the tutor"],
+      [c.survey, "Take the class survey", "Open the survey"]
+    ].map(function (x) {
+      var o = x[0];
+      if (!o || !filled(o.url)) return "";
+      return '<aside class="tutor-cta reveal"><div><h3>' + esc(x[1]) + "</h3>" +
+        (o.note ? "<p>" + esc(o.note) + "</p>" : "") + "</div>" +
+        '<a class="btn" href="' + esc(o.url) + '" target="_blank" rel="noopener">' +
+        esc(x[2]) + "</a></aside>";
+    }).join("");
   }
 
   function revealOnScroll(root) {

@@ -218,6 +218,17 @@ window.SITE = {
               "guides you to answers rather than doing assessed work for you.",
       },
 
+
+      /* Anonymous class survey (Google Form, built by ~/course-survey).
+         Same survey on both courses; its first question asks which one. */
+      survey: {
+        url:  "https://docs.google.com/forms/d/e/1FAIpQLSfUdI4xBtcWrKzL4N9i2nREqRnCxYgCPYqoKwMuEtq2-2ubEg/viewform",
+        note: "Five minutes, and completely anonymous: a few background questions, " +
+              "then the DASS-21 wellbeing scale. The answers become the dataset we " +
+              "analyse in class. No names, no index numbers, and I cannot tell who " +
+              "answered what. Taking part is your choice and carries no marks.",
+      },
+
       lectures: [
         {
           week: 1, date: "", title: "Introduction to Statistics",
@@ -397,6 +408,16 @@ window.SITE = {
       description:  "EDIT ME: what this course covers.",
       meetingTimes: "EDIT ME: days and times",
       location:     "EDIT ME: room",
+
+      /* Anonymous class survey (Google Form, built by ~/course-survey).
+         Same survey on both courses; its first question asks which one. */
+      survey: {
+        url:  "https://docs.google.com/forms/d/e/1FAIpQLSfUdI4xBtcWrKzL4N9i2nREqRnCxYgCPYqoKwMuEtq2-2ubEg/viewform",
+        note: "Five minutes, and completely anonymous: a few background questions, " +
+              "then the DASS-21 wellbeing scale. The answers become the dataset we " +
+              "analyse in class. No names, no index numbers, and I cannot tell who " +
+              "answered what. Taking part is your choice and carries no marks.",
+      },
       lectures: [],
       assignments: [],
       resources: [],
