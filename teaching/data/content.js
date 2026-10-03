@@ -405,7 +405,14 @@ window.SITE = {
       level:   "EDIT ME: e.g. Fourth year",
       active:  true,
       current: true,
-      description:  "EDIT ME: what this course covers.",
+      description:
+        "Data is easy to collect and easy to misread. This course is about the " +
+        "thinking that turns a dataset into a defensible conclusion: asking a " +
+        "question the data can actually answer, understanding where the numbers " +
+        "came from, describing and picturing them honestly, and saying how much " +
+        "of what you see could be chance. We work through probability, " +
+        "estimation, testing, regression and Bayesian reasoning, and finish on " +
+        "a real dataset that the class collects itself.",
       meetingTimes: "EDIT ME: days and times",
       location:     "EDIT ME: room",
 
@@ -418,9 +425,120 @@ window.SITE = {
               "analyse in class. No names, no index numbers, and I cannot tell who " +
               "answered what. Taking part is your choice and carries no marks.",
       },
-      lectures: [],
+      lectures: [
+        {
+          week: 1, date: "", title: "What data science is, and what statistics adds to it",
+          topics: ["Where data science came from, and what it is not",
+                   "The questions data can answer, and the ones it cannot",
+                   "Why statistical thinking is the part that keeps you honest"],
+          files: [],
+        },
+        {
+          week: 2, date: "", title: "Turning a vague question into an answerable one",
+          topics: ["From a question to a measurable quantity",
+                   "Units of observation, variables and levels of measurement",
+                   "Deciding what would count as an answer before you look"],
+          files: [],
+        },
+        {
+          week: 3, date: "", title: "Where the data came from",
+          topics: ["Sampling designs, and what each one can support",
+                   "Observational data against experiments",
+                   "Selection bias, non-response and missing data",
+                   "Reading a data dictionary before trusting a dataset"],
+          files: [],
+        },
+        {
+          week: 4, date: "", title: "Describing one variable honestly",
+          topics: ["Distributions, shape, and what an average hides",
+                   "Robust summaries and outliers",
+                   "Variation as the thing to explain, not noise to hide"],
+          files: [],
+        },
+        {
+          week: 5, date: "", title: "Describing relationships",
+          topics: ["Two-way tables and conditional distributions",
+                   "Covariance, correlation, and what correlation misses",
+                   "Confounding, and why association is not cause"],
+          files: [],
+        },
+        {
+          week: 6, date: "", title: "Pictures that argue, and pictures that lie",
+          topics: ["Every graph is a comparison: choose the comparison first",
+                   "Picking a chart for the question, not for decoration",
+                   "Axes, scales, and the usual ways graphs mislead",
+                   "Dashboards: what belongs on one, and what does not"],
+          files: [],
+        },
+        {
+          week: 7, date: "", title: "Probability as a language for uncertainty",
+          topics: ["Sample spaces, events and the axioms, briefly",
+                   "Random variables and the distributions worth knowing",
+                   "Simulation, when algebra gets hard"],
+          files: [],
+        },
+        {
+          week: 8, date: "", title: "Conditional probability and Bayes\u2019 rule",
+          topics: ["Conditioning and independence, and the mistakes made with both",
+                   "Bayes\u2019 rule, and why a positive test can mean little",
+                   "Base rates, false positives and screening decisions"],
+          files: [],
+        },
+        {
+          week: 9, date: "", title: "From a sample to a claim",
+          topics: ["Sampling distributions and standard error",
+                   "Confidence intervals, and what the confidence refers to",
+                   "The bootstrap, when no formula exists"],
+          files: [],
+        },
+        {
+          week: 10, date: "", title: "Testing claims, and the trouble with p-values",
+          topics: ["Hypothesis tests as a decision rule under uncertainty",
+                   "What a p-value is, and the things it is not",
+                   "Multiple comparisons, p-hacking, and saying so in advance",
+                   "Effect size against statistical significance"],
+          files: [],
+        },
+        {
+          week: 11, date: "", title: "Regression and prediction",
+          topics: ["Fitting and reading a linear model",
+                   "Several predictors, and what adjustment means",
+                   "Residuals and model checking",
+                   "Prediction and explanation are two different jobs"],
+          files: [],
+        },
+        {
+          week: 12, date: "", title: "Bayesian thinking, and our own data",
+          topics: ["Probability as a statement of belief",
+                   "Priors, updating, and reporting what you believe afterwards",
+                   "Case study: the class wellbeing survey, from questionnaire to conclusion",
+                   "Reliability, structure and regression on data we collected ourselves"],
+          files: [],
+        },
+      ],
       assignments: [],
-      resources: [],
+      resources: [
+        { title: "OpenIntro Statistics",
+          note:  "Free textbook under a Creative Commons licence, and the closest " +
+                 "match to this course. Download it in week one.",
+          url:   "https://www.openintro.org/book/os/" },
+        { title: "ModernDive: Statistical Inference via Data Science",
+          note:  "Free online book teaching these ideas through R.",
+          url:   "https://moderndive.com/" },
+        { title: "R for Data Science",
+          note:  "Free online. The practical half: importing, tidying and plotting data.",
+          url:   "https://r4ds.hadley.nz/" },
+        { title: "Fundamentals of Data Visualization",
+          note:  "Free online. Read it before you draw the charts for your project.",
+          url:   "https://clauswilke.com/dataviz/" },
+        { title: "Seeing Theory",
+          note:  "Probability and inference as animations you can play with, for " +
+                 "when the algebra is not landing.",
+          url:   "https://seeing-theory.brown.edu/" },
+        { title: "Think Stats",
+          note:  "Free online. The same statistics in Python, if you prefer it to R.",
+          url:   "https://allendowney.github.io/ThinkStats/" },
+      ],
       /* Coursework projects. Same fields as assignments. */
       projects: [],
 
