@@ -48,7 +48,6 @@ window.SITE = {
       orcid:        "https://orcid.org/0000-0002-9399-8839",
       researchgate: "https://www.researchgate.net/profile/Abdulzeid-Anafo",
       github:       "https://github.com/Zeidyen",
-      cv:           "cv.html",   // the CV page; it links to the PDF itself
     },
   },
 
