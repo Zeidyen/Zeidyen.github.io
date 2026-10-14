@@ -364,8 +364,9 @@
   // only once its url is filled in, so a course without them shows nothing.
   function ctaHtml(c) {
     return [
-      [c.tutor,  "Ask the course tutor", "Open the tutor"],
-      [c.survey, "Take the class survey", "Open the survey"]
+      [c.tutor,      "Ask the course tutor",    "Open the tutor"],
+      [c.survey,     "Take the class survey",   "Open the survey"],
+      [c.attendance, "Sign today\u2019s attendance", "Sign attendance"]
     ].map(function (x) {
       var o = x[0];
       if (!o || !filled(o.url)) return "";
