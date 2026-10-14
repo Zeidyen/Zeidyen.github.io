@@ -228,6 +228,15 @@ window.SITE = {
               "answered what. Taking part is your choice and carries no marks.",
       },
 
+
+      /* Class attendance (Apps Script web app, built by ~/course-attendance).
+         Paste its web-app URL here once, the same URL for every course: the app
+         shows whichever class is open. Empty url hides the panel. */
+      attendance: {
+        url:  "",
+        note: "Sign in during class with your UMaT Google account and the code on " +
+              "the board. It only works while the class is open, and only for you.",
+      },
       lectures: [
         {
           week: 1, date: "", title: "Introduction to Statistics",
@@ -369,6 +378,15 @@ window.SITE = {
       description:  "EDIT ME: what this course covers.",
       meetingTimes: "EDIT ME: days and times",
       location:     "EDIT ME: room",
+
+      /* Class attendance (Apps Script web app, built by ~/course-attendance).
+         Paste its web-app URL here once, the same URL for every course: the app
+         shows whichever class is open. Empty url hides the panel. */
+      attendance: {
+        url:  "",
+        note: "Sign in during class with your UMaT Google account and the code on " +
+              "the board. It only works while the class is open, and only for you.",
+      },
       lectures: [],
       assignments: [],
       resources: [],
@@ -423,6 +441,15 @@ window.SITE = {
               "then the DASS-21 wellbeing scale. The answers become the dataset we " +
               "analyse in class. No names, no index numbers, and I cannot tell who " +
               "answered what. Taking part is your choice and carries no marks.",
+      },
+
+      /* Class attendance (Apps Script web app, built by ~/course-attendance).
+         Paste its web-app URL here once, the same URL for every course: the app
+         shows whichever class is open. Empty url hides the panel. */
+      attendance: {
+        url:  "",
+        note: "Sign in during class with your UMaT Google account and the code on " +
+              "the board. It only works while the class is open, and only for you.",
       },
       lectures: [
         {
