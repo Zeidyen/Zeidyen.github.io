@@ -233,7 +233,7 @@ window.SITE = {
          Paste its web-app URL here once, the same URL for every course: the app
          shows whichever class is open. Empty url hides the panel. */
       attendance: {
-        url:  "",
+        url:  "https://script.google.com/macros/s/AKfycbywNseNdrz-45BaVaygSAlnzUM8sUg3Qf_P68NLypAfz3sCNFsyWQRoGr6v_Y8Wl8RAlA/exec",
         note: "Sign in during class with your UMaT Google account and the code on " +
               "the board. It only works while the class is open, and only for you.",
       },
@@ -383,7 +383,7 @@ window.SITE = {
          Paste its web-app URL here once, the same URL for every course: the app
          shows whichever class is open. Empty url hides the panel. */
       attendance: {
-        url:  "",
+        url:  "https://script.google.com/macros/s/AKfycbywNseNdrz-45BaVaygSAlnzUM8sUg3Qf_P68NLypAfz3sCNFsyWQRoGr6v_Y8Wl8RAlA/exec",
         note: "Sign in during class with your UMaT Google account and the code on " +
               "the board. It only works while the class is open, and only for you.",
       },
@@ -447,7 +447,7 @@ window.SITE = {
          Paste its web-app URL here once, the same URL for every course: the app
          shows whichever class is open. Empty url hides the panel. */
       attendance: {
-        url:  "",
+        url:  "https://script.google.com/macros/s/AKfycbywNseNdrz-45BaVaygSAlnzUM8sUg3Qf_P68NLypAfz3sCNFsyWQRoGr6v_Y8Wl8RAlA/exec",
         note: "Sign in during class with your UMaT Google account and the code on " +
               "the board. It only works while the class is open, and only for you.",
       },
