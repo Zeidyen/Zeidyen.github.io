@@ -457,14 +457,14 @@ window.SITE = {
           topics: ["Where data science came from, and what it is not",
                    "The questions data can answer, and the ones it cannot",
                    "Why statistical thinking is the part that keeps you honest"],
-          files: [],
+          files: [{ label: "Notes (6 pp)", path: "files/lectures/stat-thinking/sts-week1-introduction-to-data-science.pdf" }],
         },
         {
           week: 2, date: "", title: "Turning a vague question into an answerable one",
           topics: ["From a question to a measurable quantity",
                    "Units of observation, variables and levels of measurement",
                    "Deciding what would count as an answer before you look"],
-          files: [],
+          files: [{ label: "Notes (8 pp)", path: "files/lectures/stat-thinking/sts-week2-answerable-questions.pdf" }],
         },
         {
           week: 3, date: "", title: "Where the data came from",
@@ -472,14 +472,14 @@ window.SITE = {
                    "Observational data against experiments",
                    "Selection bias, non-response and missing data",
                    "Reading a data dictionary before trusting a dataset"],
-          files: [],
+          files: [{ label: "Notes (11 pp)", path: "files/lectures/stat-thinking/sts-week3-where-the-data-came-from.pdf" }],
         },
         {
           week: 4, date: "", title: "Describing one variable honestly",
           topics: ["Distributions, shape, and what an average hides",
                    "Robust summaries and outliers",
                    "Variation as the thing to explain, not noise to hide"],
-          files: [],
+          files: [{ label: "Notes (10 pp)", path: "files/lectures/stat-thinking/sts-week4-describing-one-variable.pdf" }],
         },
         {
           week: 5, date: "", title: "Describing relationships",
