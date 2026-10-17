@@ -292,6 +292,11 @@ window.SITE = {
       assignments: [],
 
       resources: [
+        { title: "How to sign attendance",
+          note:  "One page: the five steps, what the screen looks like, and how to fix " +
+                 "the usual problem of being signed in to a personal Gmail instead of " +
+                 "your university account.",
+          path:  "files/resources/attendance/attendance-student-guide.pdf" },
         { title: "Complete lecture notes",
           note:  "All eight chapters in one file, 131 pages, 5.8 MB. The chapter " +
                  "files above are smaller if you are on mobile data.",
@@ -389,7 +394,13 @@ window.SITE = {
       },
       lectures: [],
       assignments: [],
-      resources: [],
+      resources: [
+        { title: "How to sign attendance",
+          note:  "One page: the five steps, what the screen looks like, and how to fix " +
+                 "the usual problem of being signed in to a personal Gmail instead of " +
+                 "your university account.",
+          path:  "files/resources/attendance/attendance-student-guide.pdf" },
+      ],
       /* Coursework projects. Same fields as assignments. */
       projects: [
         // {
@@ -544,6 +555,11 @@ window.SITE = {
       ],
       assignments: [],
       resources: [
+        { title: "How to sign attendance",
+          note:  "One page: the five steps, what the screen looks like, and how to fix " +
+                 "the usual problem of being signed in to a personal Gmail instead of " +
+                 "your university account.",
+          path:  "files/resources/attendance/attendance-student-guide.pdf" },
         { title: "OpenIntro Statistics",
           note:  "Free textbook under a Creative Commons licence, and the closest " +
                  "match to this course. Download it in week one.",
