@@ -179,8 +179,16 @@
       ? active.map(courseCard).join("")
       : emptyBox("No courses listed yet.");
 
-    // announcements, newest first
-    var anns = (S.announcements || []).slice().sort(function (a, b) {
+    drawAnnouncements(S.announcements || []);
+    // Announcements may also come from the lecturer's spreadsheet; if that feed
+    // answers, it replaces this list. If it does not, the page keeps what it has.
+    loadAnnouncementFeed(function (fromSheet) { drawAnnouncements(fromSheet); });
+  }
+
+  /* --------------------------------------------------------- announcements */
+
+  function drawAnnouncements(list) {
+    var anns = (list || []).slice().sort(function (a, b) {
       return String(b.date || "").localeCompare(String(a.date || ""));
     });
     $("homeAnnouncements").innerHTML = anns.length
@@ -196,6 +204,68 @@
             '</div><p class="desc">' + esc(a.body) + "</p></article>";
         }).join("")
       : emptyBox("No announcements yet.");
+  }
+
+  /* Reads a Google Sheet published as CSV: Date, Course, Title, Body, ... The
+     course column holds the ids used below, and anything else means everyone. */
+  var FEED_COURSE = { ps361: "prob-stats", stats: "stat-thinking-ds", mf281: "prob-theory" };
+
+  function loadAnnouncementFeed(done) {
+    var url = (S.site && S.site.announcementsFeed) || "";
+    if (!filled(url) || !window.fetch) return;
+    fetch(url, { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+      .then(function (text) {
+        var rows = parseCsv(text);
+        if (rows.length < 2) return;
+        var out = [];
+        for (var i = 1; i < rows.length; i++) {
+          var row = rows[i];
+          var title = (row[2] || "").trim(), body = (row[3] || "").trim();
+          var sentAt = (row[5] || "").trim();
+          if (!title || !body || !sentAt) continue;      // drafts stay unpublished
+          out.push({
+            date:   isoDate(row[0]),
+            course: FEED_COURSE[(row[1] || "").trim().toLowerCase()] || "",
+            title:  title,
+            body:   body
+          });
+        }
+        if (out.length) done(out);
+      })
+      .catch(function () { /* offline, or the sheet was unpublished: keep what we have */ });
+  }
+
+  // Sheets writes dates in several shapes; keep it to YYYY-MM-DD for sorting.
+  function isoDate(v) {
+    var s = String(v || "").trim();
+    var iso = /^(\d{4})-(\d{2})-(\d{2})/.exec(s);
+    if (iso) return iso[1] + "-" + iso[2] + "-" + iso[3];
+    var d = new Date(s);
+    if (isNaN(d.getTime())) return "";
+    var p = function (n) { return (n < 10 ? "0" : "") + n; };
+    return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+  }
+
+  // Minimal CSV reader: handles quoted fields, commas and newlines inside them.
+  function parseCsv(text) {
+    var rows = [], row = [], field = "", inQuotes = false;
+    for (var i = 0; i < text.length; i++) {
+      var ch = text.charAt(i);
+      if (inQuotes) {
+        if (ch === '"') {
+          if (text.charAt(i + 1) === '"') { field += '"'; i++; }
+          else inQuotes = false;
+        } else field += ch;
+      } else if (ch === '"') inQuotes = true;
+      else if (ch === ",") { row.push(field); field = ""; }
+      else if (ch === "\n" || ch === "\r") {
+        if (field !== "" || row.length) { row.push(field); rows.push(row); row = []; field = ""; }
+        if (ch === "\r" && text.charAt(i + 1) === "\n") i++;
+      } else field += ch;
+    }
+    if (field !== "" || row.length) { row.push(field); rows.push(row); }
+    return rows;
 
     // every open deadline across every course, soonest first
     var due = [];

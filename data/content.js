@@ -16,6 +16,16 @@
 window.SITE = {
 
   /* ======================================================================
+     0. LIVE ANNOUNCEMENTS (optional)
+     Paste the "publish to web" CSV link of the Announcements sheet here, and
+     the front page will show whatever has been sent from it. Leave it empty
+     to use the announcements written further down this file instead.
+     ====================================================================== */
+  site: {
+    announcementsFeed: "",
+  },
+
+  /* ======================================================================
      1. YOU
      ====================================================================== */
   person: {
