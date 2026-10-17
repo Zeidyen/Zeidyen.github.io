@@ -57,6 +57,15 @@ window.SITE = {
      ====================================================================== */
   announcements: [
     {
+      date:   "2026-10-17",
+      title:  "Welcome to Week 2 \uD83D\uDE42",
+      body:   "Welcome back. By now you should have read the Week 1 lecture notes " +
+              "(Lecture 1), which are on the course page. Come to class having read " +
+              "them, not meaning to. There will be a short quiz on Lecture 1, and it " +
+              "will not be announced beforehand, so keep the notes fresh.",
+      course: "prob-stats",
+    },
+    {
       date:   "2026-09-19",
       title:  "Course materials are now online",
       body:   "All lecture notes and assignments will be posted on this site. " +
