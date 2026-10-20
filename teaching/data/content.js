@@ -448,11 +448,13 @@ window.SITE = {
         },
         {
           week: 4, date: "", title: "Independence",
-          topics: ["Independence of two events, and what it is not",
-                   "Pairwise against mutual independence",
+          topics: ["Independence of two events, and why it is not disjointness",
+                   "Independence of complements",
+                   "Pairwise against mutual independence, with a counterexample",
                    "Conditional independence",
-                   "Reliability of series and parallel systems"],
-          files: [],
+                   "Independent trials",
+                   "Reliability of series, parallel and mixed systems"],
+          files: [{ label: "Notes (6 pp)", path: "files/lectures/prob-theory/mf281-week4-independence.pdf" }],
         },
         {
           week: 5, date: "", title: "Discrete random variables",
