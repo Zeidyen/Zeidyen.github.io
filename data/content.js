@@ -411,7 +411,27 @@ window.SITE = {
         note: "Sign in during class with your UMaT Google account and the code on " +
               "the board. It only works while the class is open, and only for you.",
       },
-      lectures: [],
+      lectures: [
+        {
+          week: 1, date: "", title: "Sets, functions and counting",
+          topics: ["Events as sets, and the operations on them",
+                   "De Morgan's laws, proved and used",
+                   "Partitions, Cartesian products, functions and indicators",
+                   "Counting: the counting principle, permutations, combinations, partitions",
+                   "Inclusion and exclusion"],
+          files: [{ label: "Notes (8 pp)", path: "files/lectures/prob-theory/mf281-week1-sets-and-counting.pdf" }],
+        },
+        {
+          week: 2, date: "", title: "The axioms of probability",
+          topics: ["The probability space, and what a sigma-algebra is for",
+                   "Kolmogorov's three axioms",
+                   "Complement, monotonicity and the addition rule, derived",
+                   "The union bound",
+                   "Infinite and continuous sample spaces",
+                   "Why probability zero is not impossibility"],
+          files: [{ label: "Notes (7 pp)", path: "files/lectures/prob-theory/mf281-week2-axioms.pdf" }],
+        },
+      ],
       assignments: [],
       resources: [
         { title: "How to sign attendance",
