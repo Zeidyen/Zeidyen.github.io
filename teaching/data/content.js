@@ -459,10 +459,11 @@ window.SITE = {
         {
           week: 5, date: "", title: "Discrete random variables",
           topics: ["Random variables as functions on the sample space",
-                   "Probability mass functions",
-                   "Cumulative distribution functions",
-                   "Functions of a random variable"],
-          files: [],
+                   "Probability mass functions, and checking one is valid",
+                   "Cumulative distribution functions, and reading intervals off them",
+                   "Functions of a random variable",
+                   "Indicators, and a first look at the binomial and geometric"],
+          files: [{ label: "Notes (6 pp)", path: "files/lectures/prob-theory/mf281-week5-discrete-random-variables.pdf" }],
         },
         {
           week: 6, date: "", title: "The standard discrete distributions",
