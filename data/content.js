@@ -467,11 +467,13 @@ window.SITE = {
         },
         {
           week: 6, date: "", title: "The standard discrete distributions",
-          topics: ["Bernoulli and binomial",
-                   "Geometric and negative binomial",
-                   "Poisson, and when it applies",
-                   "Choosing a distribution from the mechanism"],
-          files: [],
+          topics: ["Choosing a distribution from the mechanism",
+                   "Bernoulli and binomial",
+                   "Geometric, memorylessness, and the negative binomial",
+                   "Poisson, and why it is the law of many small chances",
+                   "Hypergeometric: sampling without replacement",
+                   "Three ways to choose wrongly"],
+          files: [{ label: "Notes (7 pp)", path: "files/lectures/prob-theory/mf281-week6-standard-discrete.pdf" }],
         },
         {
           week: 7, date: "", title: "Expectation and variance",
