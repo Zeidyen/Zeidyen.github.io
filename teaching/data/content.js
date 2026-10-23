@@ -161,7 +161,7 @@ window.SITE = {
 
     {
       id:     "prob-stats",
-      code:   "CE/EL/MC/GL/GM/ES 361",
+      code:   "CE/EL/MC/CV/GL/GM/ES 361",
       title:  "Probability and Statistics",
       term:    "First Semester, 2026/2027",
       level:   "EDIT ME: e.g. Second year engineering",
