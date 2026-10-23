@@ -308,7 +308,20 @@ window.SITE = {
         },
       ],
 
-      assignments: [],
+      assignments: [
+        {
+          id: "A1", title: "Sampling in your field",
+          due: "2026-10-26", dueTime: "04:00", points: 20,
+          description: "One page, handwritten, on how sampling is used in your own " +
+            "programme. Your technique and sample size depend on your index number, " +
+            "so read the brief before you start. Two steps: upload a photograph of " +
+            "your page by the deadline, then hand in the paper at the first class " +
+            "afterwards. Both are required.",
+          files: [
+            { label: "Assignment brief (2 pp)", path: "files/assignments/prob-stats/ps361-assignment1-sampling.pdf" },
+          ],
+        },
+      ],
 
       resources: [
         { title: "How to sign attendance",
