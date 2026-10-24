@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Play with the statistics · Dr Abdulzeid Yen Anafo</title>
-<meta name="description" content="Three things to try: guess the correlation, watch sample means settle down, and see why an accurate test can still be wrong.">
+<meta name="description" content="Five things to try: guess the correlation, watch sample means settle down, see why an accurate test can still be wrong, find the mean, median and mode, and sample a field yourself.">
 <link rel="stylesheet" href="assets/style.css">
 <style>
 /* Page-specific styles. The palette and base styles come from style.css. */
@@ -70,7 +70,7 @@ input[type=range]{width:100%; accent-color:var(--accent)}
   <div class="hero">
     <p class="eyebrow">For students</p>
     <h1>Play with the statistics</h1>
-    <p class="lead">Three things to try on your phone. Nothing is recorded and nothing is
+    <p class="lead">Five things to try on your phone. Nothing is recorded and nothing is
       sent anywhere: it all runs on your own device. Each one goes with a week of the
       lecture notes, so try the demo first and then read the week it belongs to.</p>
   </div>
@@ -158,6 +158,52 @@ input[type=range]{width:100%; accent-color:var(--accent)}
       </div>
     </div>
     <div class="readout" id="bayesOut"></div>
+  </section>
+
+
+  <!-- ------------------------------------------------- 4. centre game -->
+  <section class="demo">
+    <p class="tie">Statistical Thinking · Week 4 · averages</p>
+    <h2>Find the centre</h2>
+    <p>Each round shows a small dataset as a dot plot and asks for one of the three
+      averages. Set the marker and press Check. Ten rounds, and the feedback tells you
+      why the three answers differ when they do.</p>
+    <canvas id="ctrCanvas" height="190" style="height:200px" aria-label="Dot plot of a small dataset"></canvas>
+    <div class="controls">
+      <div class="ctrl">
+        <label for="ctrGuess"><span id="ctrAsk">Your answer</span> <b id="ctrGuessVal">10.0</b></label>
+        <input type="range" id="ctrGuess" min="0" max="20" step="0.1" value="10">
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn-sm" id="ctrCheck">Check</button>
+      <button class="btn-sm ghost" id="ctrNext" disabled>Next round</button>
+      <button class="btn-sm ghost" id="ctrReset">Start again</button>
+    </div>
+    <div class="readout quiet" id="ctrOut">Set the marker, then press Check.</div>
+    <div class="score">
+      <span>Round <b id="ctrRound">1</b> of 10</span>
+      <span>Right <b id="ctrRight">0</b></span>
+      <span>Average error <b id="ctrErr">&ndash;</b></span>
+    </div>
+  </section>
+
+  <!-- ----------------------------------------------- 5. sampling game -->
+  <section class="demo">
+    <p class="tie">Statistical Thinking · Week 3 · sampling design</p>
+    <h2>Sample it yourself</h2>
+    <p>Below is a field of 240 boreholes. Each has a yield you cannot see, and yields are
+      higher in the north. Your job is to estimate the average yield from a sample of 20.
+      Try each method several times and watch where its estimates land.</p>
+    <canvas id="fieldCanvas" height="180" style="height:200px" aria-label="Map of boreholes, with the sample highlighted"></canvas>
+    <div class="row">
+      <button class="btn-sm" id="smpConv">Convenience: nearest 20</button>
+      <button class="btn-sm" id="smpSrs">Simple random 20</button>
+      <button class="btn-sm" id="smpStrat">Stratified: 10 north, 10 south</button>
+      <button class="btn-sm ghost" id="smpReset">Clear</button>
+    </div>
+    <canvas id="estCanvas" height="130" style="margin-top:12px;height:124px" aria-label="Estimates from each method against the true mean"></canvas>
+    <div class="readout" id="smpOut">Pick a method to take your first sample.</div>
   </section>
 
   <p class="foot">Built for students of Probability and Statistics, Probability Theory and
@@ -487,5 +533,267 @@ input[type=range]{width:100%; accent-color:var(--accent)}
                     draw: drawSamples, means: function () { return samp.means; } };
 })();
 </script>
+
+<script>
+/* Two more games: averages, and sampling. Kept in their own scope. */
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  function css(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+  function fit(canvas) {
+    var dpr = window.devicePixelRatio || 1;
+    var w = canvas.clientWidth, h = canvas.clientHeight || canvas.height;
+    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+    var ctx = canvas.getContext("2d"); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { ctx: ctx, w: w, h: h };
+  }
+  function mean(a){ return a.reduce(function(x,y){return x+y;},0)/a.length; }
+  function median(a){ var s=a.slice().sort(function(x,y){return x-y;}), n=s.length;
+    return n%2 ? s[(n-1)/2] : (s[n/2-1]+s[n/2])/2; }
+  function mode(a){ var c={},best=null,bn=0; a.forEach(function(v){ c[v]=(c[v]||0)+1;
+    if(c[v]>bn){bn=c[v];best=v;} }); return {value:best,count:bn}; }
+
+  /* ------------------------------------------------------ 4. averages */
+
+  var ASKS = ["mean", "median", "mode"];
+  var ctr = { data: [], ask: "mean", round: 1, right: 0, errs: [], checked: false };
+
+  function uniqueMode(a) {
+    var c = {}, best = 0, ties = 0, k;
+    a.forEach(function (v) { c[v] = (c[v] || 0) + 1; if (c[v] > best) best = c[v]; });
+    for (k in c) if (c[k] === best) ties++;
+    return best >= 2 && ties === 1;
+  }
+
+  function newCentre() {
+    // A tight clump, one repeated value so a mode exists, and often an outlier
+    // far to the right, which is what pulls the mean away from the median.
+    var d, guard = 0;
+    do {
+      var n = 9 + Math.floor(Math.random() * 4), base = 4 + Math.floor(Math.random() * 4), i;
+      d = [];
+      for (i = 0; i < n - 3; i++) d.push(Math.max(1, base + Math.round((Math.random() - 0.5) * 3)));
+      var rep = Math.max(1, base + Math.round((Math.random() - 0.5) * 2));
+      d.push(rep); d.push(rep);                         // guarantee a repeated value
+      d.push(Math.random() < 0.6 ? 15 + Math.floor(Math.random() * 6)
+                                 : Math.max(1, base + Math.round((Math.random() - 0.5) * 4)));
+      guard++;
+    } while (!uniqueMode(d) && guard < 40);
+    while (!uniqueMode(d)) d.push(mode(d).value);       // last resort: break the tie
+    ctr.data = d;
+    ctr.ask = ASKS[(ctr.round - 1) % 3];
+    ctr.checked = false;
+    $("ctrAsk").textContent = "The " + ctr.ask + " is";
+    $("ctrGuess").step = ctr.ask === "mode" ? "1" : "0.1";
+    $("ctrNext").disabled = true;
+    $("ctrOut").className = "readout quiet";
+    $("ctrOut").textContent = "Set the marker to where you think the " + ctr.ask + " is, then press Check.";
+    drawCentre();
+  }
+
+  function drawCentre(markTruth) {
+    var c = fit($("ctrCanvas")), ctx = c.ctx, pad = 26;
+    ctx.clearRect(0, 0, c.w, c.h);
+    ctx.strokeStyle = css("--line"); ctx.strokeRect(0.5, 0.5, c.w - 1, c.h - 1);
+    var sx = function (v) { return pad + (v - 0) / 20 * (c.w - 2 * pad); };
+    var axisY = c.h - 26;
+
+    ctx.strokeStyle = css("--line-2"); ctx.beginPath();
+    ctx.moveTo(pad, axisY); ctx.lineTo(c.w - pad, axisY); ctx.stroke();
+    ctx.fillStyle = css("--ink-3"); ctx.font = "10px ui-sans-serif, system-ui";
+    for (var t = 0; t <= 20; t += 5) {
+      ctx.beginPath(); ctx.moveTo(sx(t), axisY); ctx.lineTo(sx(t), axisY + 4); ctx.stroke();
+      ctx.fillText(String(t), sx(t) - 4, axisY + 15);
+    }
+
+    var stack = {};
+    ctx.fillStyle = css("--accent");
+    ctr.data.slice().sort(function (a, b) { return a - b; }).forEach(function (v) {
+      stack[v] = (stack[v] || 0) + 1;
+      ctx.beginPath(); ctx.arc(sx(v), axisY - 8 - (stack[v] - 1) * 11, 4.4, 0, 6.283); ctx.fill();
+    });
+
+    var g = Number($("ctrGuess").value);
+    ctx.strokeStyle = css("--ink-3"); ctx.setLineDash([4, 3]); ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(sx(g), 12); ctx.lineTo(sx(g), axisY); ctx.stroke();
+    ctx.setLineDash([]);
+
+    if (markTruth) {
+      var truth = ctr.ask === "mean" ? mean(ctr.data)
+                : ctr.ask === "median" ? median(ctr.data) : mode(ctr.data).value;
+      ctx.strokeStyle = css("--ok"); ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(sx(truth), 12); ctx.lineTo(sx(truth), axisY); ctx.stroke();
+      ctx.fillStyle = css("--ok");
+      ctx.fillText(ctr.ask + " " + (Math.round(truth * 10) / 10), sx(truth) + 5, 20);
+    }
+  }
+
+  function checkCentre() {
+    if (ctr.checked) return;
+    var g = Number($("ctrGuess").value), d = ctr.data;
+    var m = mean(d), md = median(d), mo = mode(d).value;
+    var truth = ctr.ask === "mean" ? m : ctr.ask === "median" ? md : mo;
+    var err = Math.abs(g - truth);
+    var ok = ctr.ask === "mode" ? err < 0.5 : err <= 0.5;
+    ctr.errs.push(err); if (ok) ctr.right++;
+    ctr.checked = true;
+
+    var why = "";
+    if (m - md > 0.9) why = " The mean sits above the median because of the value out to the right: one large observation pulls the mean and leaves the median alone.";
+    else if (md - m > 0.9) why = " The mean sits below the median here, so the long tail is on the left.";
+    else why = " Mean and median are close, so this batch is roughly symmetric.";
+
+    var out = $("ctrOut"); out.className = "readout";
+    out.textContent = (ok ? "Correct. " : "Not quite. ") +
+      "Mean " + (Math.round(m * 10) / 10) + ", median " + md + ", mode " + mo +
+      ". You said " + (Math.round(g * 10) / 10) + " for the " + ctr.ask + "." + why;
+
+    $("ctrRight").textContent = ctr.right;
+    $("ctrErr").textContent = (ctr.errs.reduce(function (a, b) { return a + b; }, 0) / ctr.errs.length).toFixed(2);
+    $("ctrNext").disabled = ctr.round >= 10;
+    drawCentre(true);
+    if (ctr.round >= 10) out.textContent += "  Ten rounds done: " + ctr.right + " correct.";
+  }
+
+  $("ctrGuess").addEventListener("input", function () {
+    $("ctrGuessVal").textContent = Number(this.value).toFixed(1);
+    if (!ctr.checked) drawCentre();
+  });
+  $("ctrCheck").addEventListener("click", checkCentre);
+  $("ctrNext").addEventListener("click", function () {
+    ctr.round++; $("ctrRound").textContent = ctr.round; newCentre();
+  });
+  $("ctrReset").addEventListener("click", function () {
+    ctr = { data: [], ask: "mean", round: 1, right: 0, errs: [], checked: false };
+    $("ctrRound").textContent = "1"; $("ctrRight").textContent = "0"; $("ctrErr").textContent = "\u2013";
+    newCentre();
+  });
+
+  /* ------------------------------------------------------ 5. sampling */
+
+  var COLS = 20, ROWS = 12, field = [], truth = 0;
+  var runs = { conv: [], srs: [], strat: [] }, lastPicked = [];
+
+  function buildField() {
+    field = [];
+    for (var r = 0; r < ROWS; r++) for (var c = 0; c < COLS; c++) {
+      // yield falls from north (row 0) to south, plus noise: a real gradient
+      var base = 9 - 4.5 * (r / (ROWS - 1));
+      field.push({ r: r, c: c, v: Math.max(0.5, base + (Math.random() - 0.5) * 2.4) });
+    }
+    truth = mean(field.map(function (p) { return p.v; }));
+  }
+
+  function sampleConvenience() {       // whatever is nearest the road at the south edge
+    var pool = field.filter(function (p) { return p.r >= ROWS - 2; });
+    return shuffle(pool).slice(0, 20);
+  }
+  function sampleSrs() { return shuffle(field.slice()).slice(0, 20); }
+  function sampleStratified() {
+    var north = field.filter(function (p) { return p.r < ROWS / 2; });
+    var south = field.filter(function (p) { return p.r >= ROWS / 2; });
+    return shuffle(north).slice(0, 10).concat(shuffle(south).slice(0, 10));
+  }
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+
+  function drawField() {
+    var c = fit($("fieldCanvas")), ctx = c.ctx;
+    ctx.clearRect(0, 0, c.w, c.h);
+    var pad = 10, cw = (c.w - 2 * pad) / COLS, ch = (c.h - 2 * pad) / ROWS;
+    var picked = {};
+    lastPicked.forEach(function (p) { picked[p.r + ":" + p.c] = true; });
+    field.forEach(function (p) {
+      var x = pad + p.c * cw, y = pad + p.r * ch;
+      ctx.fillStyle = picked[p.r + ":" + p.c] ? css("--accent") : css("--line-2");
+      ctx.globalAlpha = picked[p.r + ":" + p.c] ? 1 : 0.5;
+      ctx.beginPath(); ctx.arc(x + cw / 2, y + ch / 2, Math.min(cw, ch) * 0.3, 0, 6.283); ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = css("--ink-3"); ctx.font = "10px ui-sans-serif, system-ui";
+    ctx.fillText("north (higher yields)", pad, 9);
+    ctx.fillText("south, next to the road", pad, c.h - 1);
+  }
+
+  function drawEstimates() {
+    var c = fit($("estCanvas")), ctx = c.ctx;
+    ctx.clearRect(0, 0, c.w, c.h);
+    ctx.strokeStyle = css("--line"); ctx.strokeRect(0.5, 0.5, c.w - 1, c.h - 1);
+    var lo = truth - 3, hi = truth + 3, pad = 44;
+    var sx = function (v) { return pad + (v - lo) / (hi - lo) * (c.w - pad - 14); };
+
+    ctx.strokeStyle = css("--ok"); ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(sx(truth), 16); ctx.lineTo(sx(truth), c.h - 16); ctx.stroke();
+    ctx.fillStyle = css("--ok"); ctx.font = "10px ui-sans-serif, system-ui";
+    ctx.fillText("true mean " + truth.toFixed(2), sx(truth) + 4, 12);
+
+    ctx.strokeStyle = css("--line-2"); ctx.lineWidth = 1;
+    ctx.fillStyle = css("--ink-3"); ctx.font = "10px ui-sans-serif, system-ui";
+    for (var t = Math.ceil(lo); t <= hi; t++) {
+      ctx.beginPath(); ctx.moveTo(sx(t), c.h - 16); ctx.lineTo(sx(t), c.h - 12); ctx.stroke();
+      ctx.fillText(String(t), sx(t) - 3, c.h - 3);
+    }
+
+    var rows = [["conv", "Convenience"], ["srs", "Random"], ["strat", "Stratified"]];
+    rows.forEach(function (row, i) {
+      var y = 30 + i * 22;
+      ctx.fillStyle = css("--ink-3"); ctx.font = "10px ui-sans-serif, system-ui";
+      ctx.fillText(row[1], 4, y + 3);
+      ctx.fillStyle = css("--accent");
+      runs[row[0]].forEach(function (v) {
+        ctx.globalAlpha = 0.55;
+        ctx.beginPath(); ctx.arc(sx(v), y, 3.2, 0, 6.283); ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+    });
+  }
+
+  function takeSample(kind) {
+    var picked = kind === "conv" ? sampleConvenience()
+               : kind === "srs" ? sampleSrs() : sampleStratified();
+    lastPicked = picked;
+    var est = mean(picked.map(function (p) { return p.v; }));
+    runs[kind].push(est);
+    drawField(); drawEstimates();
+
+    var label = kind === "conv" ? "Convenience" : kind === "srs" ? "Simple random" : "Stratified";
+    var avg = function (a) { return a.length ? mean(a) : null; };
+    var bias = runs.conv.length ? (avg(runs.conv) - truth) : null;
+    $("smpOut").innerHTML =
+      "<b>" + label + "</b> sample of 20 gives " + est.toFixed(2) +
+      ", against a true mean of " + truth.toFixed(2) + ": out by " +
+      (est - truth).toFixed(2) + ".<br>" +
+      (runs.conv.length >= 3 && bias !== null
+        ? "Your convenience samples average " + avg(runs.conv).toFixed(2) +
+          ", which is " + Math.abs(bias).toFixed(2) + " too " + (bias < 0 ? "low" : "high") +
+          ". That is bias, and taking more of them will not fix it."
+        : "Take several of each and compare where the dots sit against the green line.") +
+      (runs.srs.length >= 3 && runs.strat.length >= 3
+        ? "<br>Random and stratified both centre on the truth; stratified is the tighter of the two."
+        : "");
+  }
+
+  $("smpConv").addEventListener("click", function () { takeSample("conv"); });
+  $("smpSrs").addEventListener("click", function () { takeSample("srs"); });
+  $("smpStrat").addEventListener("click", function () { takeSample("strat"); });
+  $("smpReset").addEventListener("click", function () {
+    runs = { conv: [], srs: [], strat: [] }; lastPicked = [];
+    drawField(); drawEstimates();
+    $("smpOut").textContent = "Cleared. Pick a method to sample again.";
+  });
+
+  window.addEventListener("resize", function () { drawCentre(ctr.checked); drawField(); drawEstimates(); });
+
+  newCentre(); buildField(); drawField(); drawEstimates();
+
+  window.__games = { mean: mean, median: median, mode: mode,
+                     take: takeSample, runs: function () { return runs; },
+                     truth: function () { return truth; }, ctr: function () { return ctr; } };
+})();
+</script>
+
 </body>
 </html>
