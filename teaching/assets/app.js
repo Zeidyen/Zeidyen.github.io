@@ -436,7 +436,8 @@
     return [
       [c.tutor,      "Ask the course tutor",    "Open the tutor"],
       [c.survey,     "Take the class survey",   "Open the survey"],
-      [c.attendance, "Sign today\u2019s attendance", "Sign attendance"]
+      [c.attendance, "Sign today\u2019s attendance", "Sign attendance"],
+      [S.site && S.site.practice, "Play with the statistics", "Try the demos"]
     ].map(function (x) {
       var o = x[0];
       if (!o || !filled(o.url)) return "";

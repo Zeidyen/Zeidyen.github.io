@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Play with the statistics · Dr Abdulzeid Yen Anafo</title>
+<meta name="description" content="Three things to try: guess the correlation, watch sample means settle down, and see why an accurate test can still be wrong.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* Page-specific styles. The palette and base styles come from style.css. */
+.lead{color:var(--ink-2); max-width:62ch; margin:0 0 1.8rem}
+.demo{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+  padding:18px 20px; margin-bottom:22px; box-shadow:var(--shadow)}
+.demo h2{font:600 1.15rem/1.3 var(--serif); margin:0 0 .25rem}
+.demo .tie{font:600 .7rem/1 var(--sans); letter-spacing:.08em; text-transform:uppercase;
+  color:var(--ink-3); margin:0 0 .7rem}
+.demo p{color:var(--ink-2); font-size:.93rem; margin:0 0 .8rem}
+canvas{display:block; width:100%; border-radius:10px; background:var(--bg);
+  border:1px solid var(--line)}
+.controls{display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-top:12px}
+.ctrl{flex:1 1 180px; min-width:160px}
+.ctrl label{display:flex; justify-content:space-between; font-size:.8rem; color:var(--ink-2);
+  margin-bottom:4px}
+.ctrl label b{color:var(--ink); font-variant-numeric:tabular-nums}
+input[type=range]{width:100%; accent-color:var(--accent)}
+.row{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+.btn-sm{font:600 .85rem/1 var(--sans); cursor:pointer; border-radius:9px; padding:10px 14px;
+  background:var(--accent); color:#fff; border:0}
+:root[data-theme="dark"] .btn-sm:not(.ghost),
+:root:not([data-theme="light"]) .btn-sm:not(.ghost){color:#16151a}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .btn-sm:not(.ghost){color:#fff}}
+.btn-sm.ghost{color:var(--ink-2)}
+.btn-sm.ghost{background:transparent; color:var(--ink-2); border:1px solid var(--line-2)}
+.btn-sm:disabled{opacity:.45; cursor:default}
+.readout{margin-top:12px; padding:11px 13px; border-radius:10px; background:var(--accent-soft);
+  font-size:.9rem; color:var(--ink)}
+.readout.quiet{background:var(--dead-soft); color:var(--ink-2)}
+.score{display:flex; gap:18px; font-size:.85rem; color:var(--ink-2); margin-top:10px;
+  font-variant-numeric:tabular-nums}
+.score b{color:var(--ink)}
+.grid100{display:grid; grid-template-columns:repeat(20,1fr); gap:3px; margin:12px 0 6px}
+@media (max-width:560px){.grid100{grid-template-columns:repeat(10,1fr)}}
+.cell{aspect-ratio:1; border-radius:2px; background:var(--line)}
+.cell.tp{background:var(--accent)}
+.cell.fp{background:var(--warn)}
+.cell.fn{background:var(--ink-3)}
+.key{display:flex; flex-wrap:wrap; gap:14px; font-size:.78rem; color:var(--ink-2)}
+.key span{display:flex; align-items:center; gap:6px}
+.key i{width:11px; height:11px; border-radius:2px; display:inline-block}
+.foot{font-size:.8rem; color:var(--ink-3); margin-top:26px}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="./">
+      <span class="brand-name">Dr Abdulzeid Yen Anafo</span>
+      <span class="brand-sub">University of Mines and Technology, Tarkwa</span>
+    </a>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch between light and dark">◐</button>
+  </div>
+  <nav class="wrap"><div class="tabs">
+    <a href="./">Courses</a>
+    <a href="practice.html" aria-current="page">Play</a>
+  </div></nav>
+</header>
+
+<main class="wrap" id="main">
+  <div class="hero">
+    <p class="eyebrow">For students</p>
+    <h1>Play with the statistics</h1>
+    <p class="lead">Three things to try on your phone. Nothing is recorded and nothing is
+      sent anywhere: it all runs on your own device. Each one goes with a week of the
+      lecture notes, so try the demo first and then read the week it belongs to.</p>
+  </div>
+
+  <!-- ------------------------------------------------ 1. correlation game -->
+  <section class="demo">
+    <p class="tie">Statistical Thinking · Week 5 · relationships</p>
+    <h2>Guess the correlation</h2>
+    <p>Look at the scatter and estimate <i>r</i>, the correlation. Drag the slider, then press
+      Check. Ten rounds. Most people are poor at this to begin with and much better after
+      twenty minutes, which is the point.</p>
+    <canvas id="corrCanvas" height="260" aria-label="Scatter plot of two variables"></canvas>
+    <div class="controls">
+      <div class="ctrl">
+        <label for="corrGuess"><span>Your guess for <i>r</i></span> <b id="corrGuessVal">0.00</b></label>
+        <input type="range" id="corrGuess" min="-1" max="1" step="0.01" value="0">
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn-sm" id="corrCheck">Check</button>
+      <button class="btn-sm ghost" id="corrNext" disabled>Next scatter</button>
+      <button class="btn-sm ghost" id="corrReset">Start again</button>
+    </div>
+    <div class="readout quiet" id="corrOut">Make a guess, then press Check.</div>
+    <div class="score">
+      <span>Round <b id="corrRound">1</b> of 10</span>
+      <span>Average error <b id="corrErr">–</b></span>
+      <span>Best <b id="corrBest">–</b></span>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------- 2. sampling simulator -->
+  <section class="demo">
+    <p class="tie">Statistical Thinking · Week 3 and Week 9 · sampling</p>
+    <h2>Why bigger samples settle down</h2>
+    <p>The top plot is a population: lopsided, like most real measurements. Draw samples
+      from it and the bottom plot collects their <em>means</em>. Watch what happens to the
+      spread of that second plot as you raise the sample size.</p>
+    <canvas id="popCanvas" height="110" aria-label="Population distribution"></canvas>
+    <canvas id="meanCanvas" height="150" style="margin-top:8px" aria-label="Distribution of sample means"></canvas>
+    <div class="controls">
+      <div class="ctrl">
+        <label for="sampN"><span>Sample size <i>n</i></span> <b id="sampNVal">10</b></label>
+        <input type="range" id="sampN" min="1" max="100" step="1" value="10">
+      </div>
+      <div class="ctrl">
+        <label for="popShape">Population shape <b id="popShapeVal">Right-skewed</b></label>
+        <input type="range" id="popShape" min="0" max="2" step="1" value="0">
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn-sm" id="draw1">Draw 1 sample</button>
+      <button class="btn-sm" id="draw200">Draw 200</button>
+      <button class="btn-sm ghost" id="sampReset">Clear</button>
+    </div>
+    <div class="readout" id="sampOut">Press a button to start drawing samples.</div>
+  </section>
+
+  <!-- ------------------------------------------- 3. test accuracy explorer -->
+  <section class="demo">
+    <p class="tie">MF 281 · Week 3 · Bayes</p>
+    <h2>Why an accurate test can still be wrong</h2>
+    <p>A sensor, or a medical test. Move the sliders and watch what happens to the question
+      that matters: if it says positive, how often is that true? Each square is one of 1000
+      items tested.</p>
+    <div class="grid100" id="bayesGrid" aria-hidden="true"></div>
+    <div class="key">
+      <span><i style="background:var(--accent)"></i> truly faulty, flagged</span>
+      <span><i style="background:var(--warn)"></i> sound, flagged anyway</span>
+      <span><i style="background:var(--ink-3)"></i> faulty, missed</span>
+      <span><i style="background:var(--line)"></i> sound, not flagged</span>
+    </div>
+    <div class="controls">
+      <div class="ctrl">
+        <label for="prev">How many are really faulty <b id="prevVal">1%</b></label>
+        <input type="range" id="prev" min="0.1" max="50" step="0.1" value="1">
+      </div>
+      <div class="ctrl">
+        <label for="sens">Detects a real fault <b id="sensVal">90%</b></label>
+        <input type="range" id="sens" min="50" max="100" step="1" value="90">
+      </div>
+      <div class="ctrl">
+        <label for="spec">Correct on a sound item <b id="specVal">95%</b></label>
+        <input type="range" id="spec" min="50" max="100" step="1" value="95">
+      </div>
+    </div>
+    <div class="readout" id="bayesOut"></div>
+  </section>
+
+  <p class="foot">Built for students of Probability and Statistics, Probability Theory and
+    Statistical Thinking for Data Science. Everything here runs in your browser; no data
+    leaves your phone.</p>
+</main>
+
+<footer class="site-foot"><div class="wrap">
+  <p class="footback"><a href="./">← Back to the courses</a></p>
+  <p id="footLine">Dr Abdulzeid Yen Anafo · University of Mines and Technology, Tarkwa</p>
+</div></footer>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* --------------------------------------------------------------- theme */
+  try {
+    var saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") document.documentElement.setAttribute("data-theme", saved);
+  } catch (e) { /* private mode */ }
+  $("themeBtn").addEventListener("click", function () {
+    var cur = document.documentElement.getAttribute("data-theme");
+    if (!cur) cur = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    var next = cur === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) { /* ignore */ }
+    drawAll();
+  });
+
+  function css(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  // Canvases are sized in CSS; give them real pixels for the device.
+  function fit(canvas) {
+    var dpr = window.devicePixelRatio || 1;
+    var w = canvas.clientWidth, h = canvas.clientHeight || canvas.height;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    var ctx = canvas.getContext("2d");
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { ctx: ctx, w: w, h: h };
+  }
+
+  /* ---------------------------------------------- shared random numbers */
+
+  // Box-Muller: two uniforms in, one standard normal out.
+  function randn() {
+    var u = 0, v = 0;
+    while (u === 0) u = Math.random();
+    while (v === 0) v = Math.random();
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  }
+
+  function pearson(xs, ys) {
+    var n = xs.length, mx = 0, my = 0, i;
+    for (i = 0; i < n; i++) { mx += xs[i]; my += ys[i]; }
+    mx /= n; my /= n;
+    var sxy = 0, sxx = 0, syy = 0, dx, dy;
+    for (i = 0; i < n; i++) {
+      dx = xs[i] - mx; dy = ys[i] - my;
+      sxy += dx * dy; sxx += dx * dx; syy += dy * dy;
+    }
+    return sxy / Math.sqrt(sxx * syy);
+  }
+
+  /* ------------------------------------------------ 1. correlation game */
+
+  var corr = { xs: [], ys: [], r: 0, round: 1, errs: [], best: null, checked: false };
+
+  function newScatter() {
+    // y = r x + sqrt(1 - r^2) z gives a cloud with population correlation r.
+    var target = (Math.random() * 1.9 - 0.95);
+    var n = 40 + Math.floor(Math.random() * 40);
+    var xs = [], ys = [], i, x, z;
+    for (i = 0; i < n; i++) {
+      x = randn(); z = randn();
+      xs.push(x);
+      ys.push(target * x + Math.sqrt(1 - target * target) * z);
+    }
+    corr.xs = xs; corr.ys = ys;
+    corr.r = pearson(xs, ys);          // the sample r, which is what we grade against
+    corr.checked = false;
+    $("corrNext").disabled = true;
+    $("corrOut").className = "readout quiet";
+    $("corrOut").textContent = "Make a guess, then press Check.";
+    drawScatter();
+  }
+
+  function drawScatter() {
+    var c = fit($("corrCanvas")), ctx = c.ctx;
+    ctx.clearRect(0, 0, c.w, c.h);
+    var pad = 16, i;
+    var xs = corr.xs, ys = corr.ys;
+    var minx = Math.min.apply(null, xs), maxx = Math.max.apply(null, xs);
+    var miny = Math.min.apply(null, ys), maxy = Math.max.apply(null, ys);
+    var sx = function (x) { return pad + (x - minx) / (maxx - minx || 1) * (c.w - 2 * pad); };
+    var sy = function (y) { return c.h - pad - (y - miny) / (maxy - miny || 1) * (c.h - 2 * pad); };
+
+    ctx.strokeStyle = css("--line"); ctx.lineWidth = 1;
+    ctx.strokeRect(0.5, 0.5, c.w - 1, c.h - 1);
+
+    if (corr.checked) {                 // show the least-squares line once answered
+      var n = xs.length, mx = 0, my = 0;
+      for (i = 0; i < n; i++) { mx += xs[i]; my += ys[i]; }
+      mx /= n; my /= n;
+      var num = 0, den = 0;
+      for (i = 0; i < n; i++) { num += (xs[i] - mx) * (ys[i] - my); den += (xs[i] - mx) * (xs[i] - mx); }
+      var b1 = num / den, b0 = my - b1 * mx;
+      ctx.strokeStyle = css("--ok"); ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(sx(minx), sy(b0 + b1 * minx));
+      ctx.lineTo(sx(maxx), sy(b0 + b1 * maxx));
+      ctx.stroke();
+    }
+
+    ctx.fillStyle = css("--accent");
+    for (i = 0; i < xs.length; i++) {
+      ctx.beginPath(); ctx.arc(sx(xs[i]), sy(ys[i]), 2.6, 0, 6.283); ctx.fill();
+    }
+  }
+
+  function checkGuess() {
+    if (corr.checked) return;
+    var guess = Number($("corrGuess").value);
+    var err = Math.abs(guess - corr.r);
+    corr.errs.push(err);
+    if (corr.best === null || err < corr.best) corr.best = err;
+    corr.checked = true;
+
+    var verdict = err < 0.05 ? "Excellent." : err < 0.12 ? "Close." :
+                  err < 0.25 ? "Not bad." : "Some way off.";
+    var tip = Math.abs(corr.r) > 0.6 && guess < corr.r - 0.15
+      ? " People usually guess too low for strong relationships."
+      : (Math.abs(corr.r) < 0.3 && Math.abs(guess) > Math.abs(corr.r) + 0.15
+         ? " A loose cloud like this is weaker than it looks."
+         : "");
+    var out = $("corrOut");
+    out.className = "readout";
+    out.textContent = verdict + " The true value is r = " + corr.r.toFixed(2) +
+      ", you said " + guess.toFixed(2) + ", so you were out by " + err.toFixed(2) + "." + tip;
+
+    var mean = corr.errs.reduce(function (a, b) { return a + b; }, 0) / corr.errs.length;
+    $("corrErr").textContent = mean.toFixed(2);
+    $("corrBest").textContent = corr.best.toFixed(2);
+    $("corrNext").disabled = corr.round >= 10;
+    drawScatter();
+
+    if (corr.round >= 10) {
+      out.textContent += "  That is ten rounds: your average error was " + mean.toFixed(2) +
+        ". Press Start again for another ten.";
+    }
+  }
+
+  $("corrGuess").addEventListener("input", function () {
+    $("corrGuessVal").textContent = Number(this.value).toFixed(2);
+  });
+  $("corrCheck").addEventListener("click", checkGuess);
+  $("corrNext").addEventListener("click", function () {
+    corr.round++; $("corrRound").textContent = corr.round; newScatter();
+  });
+  $("corrReset").addEventListener("click", function () {
+    corr = { xs: [], ys: [], r: 0, round: 1, errs: [], best: null, checked: false };
+    $("corrRound").textContent = "1"; $("corrErr").textContent = "–"; $("corrBest").textContent = "–";
+    newScatter();
+  });
+
+  /* -------------------------------------------- 2. sampling simulator */
+
+  var SHAPES = ["Right-skewed", "Uniform", "Two clumps"];
+  var samp = { means: [], shape: 0 };
+
+  function drawOne() {                    // one value from the chosen population
+    var u;
+    if (samp.shape === 0) {               // right-skewed: most small, a few large
+      u = -Math.log(1 - Math.random()) * 2.2;
+      return Math.min(u, 20);
+    }
+    if (samp.shape === 1) return Math.random() * 10;          // uniform 0 to 10
+    return Math.random() < 0.5                                 // two clumps
+      ? 2 + randn() * 0.7
+      : 8 + randn() * 0.7;
+  }
+
+  function popMoments() {                 // estimated by simulation, honest and simple
+    var n = 20000, s = 0, ss = 0, v;
+    for (var i = 0; i < n; i++) { v = drawOne(); s += v; ss += v * v; }
+    var m = s / n;
+    return { mean: m, sd: Math.sqrt(ss / n - m * m) };
+  }
+
+  function histogram(canvas, values, lo, hi, colour, label) {
+    var c = fit(canvas), ctx = c.ctx;
+    ctx.clearRect(0, 0, c.w, c.h);
+    ctx.strokeStyle = css("--line"); ctx.lineWidth = 1;
+    ctx.strokeRect(0.5, 0.5, c.w - 1, c.h - 1);
+    if (!values.length) {
+      ctx.fillStyle = css("--ink-3"); ctx.font = "12px ui-sans-serif, system-ui";
+      ctx.fillText(label, 10, 20);
+      return;
+    }
+    var bins = 44, counts = new Array(bins).fill(0), i, k;
+    for (i = 0; i < values.length; i++) {
+      k = Math.floor((values[i] - lo) / (hi - lo) * bins);
+      if (k >= 0 && k < bins) counts[k]++;
+    }
+    var max = Math.max.apply(null, counts) || 1;
+    var bw = (c.w - 16) / bins;
+    ctx.fillStyle = colour;
+    for (i = 0; i < bins; i++) {
+      var h = counts[i] / max * (c.h - 26);
+      ctx.fillRect(8 + i * bw, c.h - 8 - h, Math.max(1, bw - 1), h);
+    }
+    ctx.fillStyle = css("--ink-3"); ctx.font = "11px ui-sans-serif, system-ui";
+    ctx.fillText(label, 10, 15);
+  }
+
+  var popSample = [];
+  function rebuildPopulation() {
+    popSample = [];
+    for (var i = 0; i < 4000; i++) popSample.push(drawOne());
+    samp.means = [];
+    drawSampling();
+    $("sampOut").textContent = "Press a button to start drawing samples.";
+  }
+
+  function drawSampling() {
+    histogram($("popCanvas"), popSample, 0, 20, css("--line-2"), "The population");
+    histogram($("meanCanvas"), samp.means, 0, 20, css("--accent"),
+      "Means of your samples (" + samp.means.length + ")");
+  }
+
+  function drawSamples(howMany) {
+    var n = Number($("sampN").value), i, j, s;
+    for (i = 0; i < howMany; i++) {
+      s = 0;
+      for (j = 0; j < n; j++) s += drawOne();
+      samp.means.push(s / n);
+    }
+    drawSampling();
+    var m = samp.means.reduce(function (a, b) { return a + b; }, 0) / samp.means.length;
+    var sd = Math.sqrt(samp.means.reduce(function (a, b) { return a + (b - m) * (b - m); }, 0) /
+                       Math.max(1, samp.means.length - 1));
+    var pop = popMoments();
+    $("sampOut").innerHTML =
+      "<b>" + samp.means.length + "</b> sample means, each from " + n +
+      (n === 1 ? " observation" : " observations") + ".<br>" +
+      "The population has mean " + pop.mean.toFixed(2) + " and spread " + pop.sd.toFixed(2) +
+      ". Your sample means have spread <b>" + sd.toFixed(2) + "</b>, " +
+      "and theory says it should be about " + (pop.sd / Math.sqrt(n)).toFixed(2) +
+      " (that is &sigma;/&radic;n)." +
+      (n >= 25 ? "<br>Notice the lower plot is close to a bell even though the population is not."
+               : "");
+  }
+
+  $("sampN").addEventListener("input", function () { $("sampNVal").textContent = this.value; });
+  $("popShape").addEventListener("input", function () {
+    samp.shape = Number(this.value);
+    $("popShapeVal").textContent = SHAPES[samp.shape];
+    rebuildPopulation();
+  });
+  $("draw1").addEventListener("click", function () { drawSamples(1); });
+  $("draw200").addEventListener("click", function () { drawSamples(200); });
+  $("sampReset").addEventListener("click", function () { samp.means = []; drawSampling();
+    $("sampOut").textContent = "Cleared. Press a button to start again."; });
+
+  /* ------------------------------------------ 3. test accuracy explorer */
+
+  function updateBayes() {
+    var prev = Number($("prev").value) / 100;
+    var sens = Number($("sens").value) / 100;
+    var spec = Number($("spec").value) / 100;
+    $("prevVal").textContent = (prev * 100).toFixed(1).replace(/\.0$/, "") + "%";
+    $("sensVal").textContent = Math.round(sens * 100) + "%";
+    $("specVal").textContent = Math.round(spec * 100) + "%";
+
+    var N = 1000;
+    var faulty = prev * N;
+    var tp = faulty * sens, fn = faulty - tp;
+    var fp = (N - faulty) * (1 - spec), tn = (N - faulty) - fp;
+    var ppv = tp + fp > 0 ? tp / (tp + fp) : 0;
+    var npv = tn + fn > 0 ? tn / (tn + fn) : 0;
+
+    // 100 squares, each standing for 10 items, filled in order TP, FP, FN, then sound.
+    var grid = $("bayesGrid");
+    if (grid.childElementCount !== 100) {
+      grid.innerHTML = "";
+      for (var i = 0; i < 100; i++) grid.appendChild(document.createElement("div"));
+    }
+    var nTp = Math.round(tp / 10), nFp = Math.round(fp / 10), nFn = Math.round(fn / 10);
+    for (var k = 0; k < 100; k++) {
+      var cls = "cell";
+      if (k < nTp) cls += " tp";
+      else if (k < nTp + nFp) cls += " fp";
+      else if (k < nTp + nFp + nFn) cls += " fn";
+      grid.children[k].className = cls;
+    }
+
+    $("bayesOut").innerHTML =
+      "Out of 1000 items, <b>" + Math.round(faulty) + "</b> are really faulty. The test flags <b>" +
+      Math.round(tp + fp) + "</b> of them: " + Math.round(tp) + " correctly and " +
+      Math.round(fp) + " wrongly.<br>" +
+      "So when it says faulty, it is right <b>" + (ppv * 100).toFixed(1) + "%</b> of the time" +
+      (ppv < 0.5 ? ", which is less than half, however accurate the test sounds." : ".") +
+      "<br>When it says sound, it is right " + (npv * 100).toFixed(1) + "% of the time, and it " +
+      "misses " + Math.round(fn) + " faulty " + (Math.round(fn) === 1 ? "item" : "items") + ".";
+  }
+
+  ["prev", "sens", "spec"].forEach(function (id) {
+    $(id).addEventListener("input", updateBayes);
+  });
+
+  /* ---------------------------------------------------------------- boot */
+
+  function drawAll() { drawScatter(); drawSampling(); }
+  window.addEventListener("resize", drawAll);
+
+  newScatter();
+  rebuildPopulation();
+  updateBayes();
+
+  // Hooks so the page can be checked automatically; harmless in normal use.
+  window.__demo = { pearson: pearson, corr: function () { return corr; },
+                    draw: drawSamples, means: function () { return samp.means; } };
+})();
+</script>
+</body>
+</html>

@@ -23,6 +23,16 @@ window.SITE = {
      ====================================================================== */
   site: {
     announcementsFeed: "",
+
+    /* Interactive demos page (practice.html). A panel appears on every course
+       page while url is filled in; empty it to hide the panel everywhere. */
+    practice: {
+      url:  "practice.html",
+      note: "Three things to try on your phone: guess the correlation, watch sample " +
+            "means settle down as the sample grows, and see why a test that is right " +
+            "95% of the time can still be wrong most times it fires. Nothing is " +
+            "recorded; it all runs on your own device.",
+    },
   },
 
   /* ======================================================================
