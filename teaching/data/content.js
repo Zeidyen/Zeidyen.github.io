@@ -28,10 +28,12 @@ window.SITE = {
        page while url is filled in; empty it to hide the panel everywhere. */
     practice: {
       url:  "practice.html",
-      note: "Three things to try on your phone: guess the correlation, watch sample " +
-            "means settle down as the sample grows, and see why a test that is right " +
-            "95% of the time can still be wrong most times it fires. Nothing is " +
-            "recorded; it all runs on your own device.",
+      note: "Five things to try on your phone: guess the correlation, watch sample " +
+            "means settle down as the sample grows, see why a test that is right " +
+            "95% of the time can still be wrong most times it fires, find the mean, " +
+            "median and mode in ten rounds, and sample a field of boreholes three " +
+            "different ways to see which method lies to you. Nothing is recorded; " +
+            "it all runs on your own device.",
     },
   },
 
