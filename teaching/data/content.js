@@ -696,7 +696,7 @@ window.SITE = {
       assignments: [
         {
           id: "A1", title: "Questions, provenance and one variable",
-          due: "", dueTime: "", points: 50,
+          due: "2026-11-06", dueTime: "23:59", points: 50,
           description: "Weeks 1 to 4. Provenance and measurement: who collected the " +
             "data, who is missing from it, and what that costs you; turning vague " +
             "questions into answerable ones; then a full description of one variable " +
@@ -708,7 +708,7 @@ window.SITE = {
         },
         {
           id: "A2", title: "Relationships, pictures and probability",
-          due: "", dueTime: "", points: 50,
+          due: "2026-11-20", dueTime: "23:59", points: 50,
           description: "Weeks 4 to 7. A two-way table with risk difference, risk " +
             "ratio and odds ratio; a correlation computed by hand and what one " +
             "outlier does to it; three misleading figures to diagnose and redraw; " +
@@ -720,7 +720,7 @@ window.SITE = {
         },
         {
           id: "A3", title: "Inference, models and honest limits",
-          due: "", dueTime: "", points: 50,
+          due: "2026-12-18", dueTime: "23:59", points: 50,
           description: "Weeks 8 to 12. A screening calculation by formula and by " +
             "natural frequencies; a confidence interval and the sample size to halve " +
             "it; a two-site safety comparison with an effect size, an interval and a " +
