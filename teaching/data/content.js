@@ -749,8 +749,11 @@ window.SITE = {
         },
         {
           id: "FP", title: "Final project: the whole chain, in twelve minutes",
-          due: "", dueTime: "", points: 100,
-          description: "A twelve minute presentation, in groups of three or four, " +
+          due: "2026-12-07", dueTime: "09:00", points: 100,
+          description: "Presentations run Monday 7 to Friday 11 December 2026; your " +
+            "group\u2019s slot within that week will be announced in class, and your " +
+            "slides, data, code and memo are uploaded before your own session. " +
+            "A twelve minute presentation, in groups of three or four, " +
             "taking one real question from start to finish and showing how every " +
             "stage of the course was used to answer it: the question, where the data " +
             "came from, the description, the figure, the interval, the claim, the " +
