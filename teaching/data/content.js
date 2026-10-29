@@ -710,7 +710,22 @@ window.SITE = {
           files: [{ label: "Notes (6 pp)", path: "files/lectures/stat-thinking/sts-week12-bayesian-thinking.pdf" }],
         },
       ],
-      assignments: [],
+      assignments: [
+        {
+          id: "FP", title: "Final project: the whole chain, in twelve minutes",
+          due: "", dueTime: "", points: 100,
+          description: "A twelve minute presentation, in groups of three or four, " +
+            "taking one real question from start to finish and showing how every " +
+            "stage of the course was used to answer it: the question, where the data " +
+            "came from, the description, the figure, the interval, the claim, the " +
+            "model, and what your data cannot support. Twelve minutes of talk and " +
+            "five of questions, both assessed. Every member answers at least one " +
+            "question. Dates will be announced in class.",
+          files: [
+            { label: "Project brief (3 pp)", path: "files/assignments/stat-thinking/sts-final-project.pdf" },
+          ],
+        },
+      ],
       resources: [
         { title: "How to sign attendance",
           note:  "One page: the five steps, what the screen looks like, and how to fix " +
