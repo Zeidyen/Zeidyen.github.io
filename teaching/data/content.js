@@ -712,6 +712,42 @@ window.SITE = {
       ],
       assignments: [
         {
+          id: "A1", title: "Questions, provenance and one variable",
+          due: "", dueTime: "", points: 50,
+          description: "Weeks 1 to 4. Provenance and measurement: who collected the " +
+            "data, who is missing from it, and what that costs you; turning vague " +
+            "questions into answerable ones; then a full description of one variable " +
+            "from twenty pH readings, including the outlier rule. Part C is half a " +
+            "page, handwritten, on a dataset in your own programme.",
+          files: [
+            { label: "Assignment brief (2 pp)", path: "files/assignments/stat-thinking/sts-assignment1-questions-provenance.pdf" },
+          ],
+        },
+        {
+          id: "A2", title: "Relationships, pictures and probability",
+          due: "", dueTime: "", points: 50,
+          description: "Weeks 4 to 7. A two-way table with risk difference, risk " +
+            "ratio and odds ratio; a correlation computed by hand and what one " +
+            "outlier does to it; three misleading figures to diagnose and redraw; " +
+            "and choosing between the binomial, Poisson and normal distributions by " +
+            "the mechanism rather than the shape.",
+          files: [
+            { label: "Assignment brief (2 pp)", path: "files/assignments/stat-thinking/sts-assignment2-relationships-probability.pdf" },
+          ],
+        },
+        {
+          id: "A3", title: "Inference, models and honest limits",
+          due: "", dueTime: "", points: 50,
+          description: "Weeks 8 to 12. A screening calculation by formula and by " +
+            "natural frequencies; a confidence interval and the sample size to halve " +
+            "it; a two-site safety comparison with an effect size, an interval and a " +
+            "p-value; a regression read from summary statistics; and a Bayesian " +
+            "update. Part C is the limits paragraph, handwritten.",
+          files: [
+            { label: "Assignment brief (2 pp)", path: "files/assignments/stat-thinking/sts-assignment3-inference-models.pdf" },
+          ],
+        },
+        {
           id: "FP", title: "Final project: the whole chain, in twelve minutes",
           due: "", dueTime: "", points: 100,
           description: "A twelve minute presentation, in groups of three or four, " +
