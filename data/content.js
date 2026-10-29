@@ -364,36 +364,19 @@ window.SITE = {
       /* Coursework projects. Same fields as assignments. */
       projects: [
         {
-          id: "P1", title: "Measure something, and say how sure you are",
-          due: "", dueTime: "23:59", points: 100,
-          description: "Chapters 1 and 6. Choose a quantity in your field that " +
-            "varies, sample it properly, describe how it varies, and give a " +
-            "confidence interval for its true mean or proportion. Then say what " +
-            "that interval means for a real engineering decision.",
+          id: "P1", title: "Poster project: one question, one poster",
+          due: "2026-12-07", dueTime: "09:00", points: 100,
+          description: "One project for the whole course, presented as a poster in " +
+            "the week of Monday 7 to Friday 11 December 2026; your slot will be " +
+            "announced in class. Groups of five or six take one question from their " +
+            "own field and answer it with the statistics of this course: the data " +
+            "and how it was sampled, a description with a figure, a distribution " +
+            "argued from the mechanism, a confidence interval, one pre-specified " +
+            "test, a fitted relationship, and what the data cannot support. A1 " +
+            "poster, printed or hand drawn, both marked the same. There is no " +
+            "written report: the poster and your answers at it are the assessment.",
           files: [
-            { label: "Full brief (all three projects)", path: "files/assignments/prob-stats/ps361-group-projects.pdf" },
-          ],
-        },
-        {
-          id: "P2", title: "Model the uncertainty, then decide",
-          due: "", dueTime: "23:59", points: 100,
-          description: "Chapters 2 to 5. Fit a probability distribution to an " +
-            "uncertain quantity, argued from the mechanism rather than picked by " +
-            "habit, then use expected value to choose between at least two " +
-            "courses of action with costs attached.",
-          files: [
-            { label: "Full brief (all three projects)", path: "files/assignments/prob-stats/ps361-group-projects.pdf" },
-          ],
-        },
-        {
-          id: "P3", title: "Test a claim, and find a relationship",
-          due: "", dueTime: "23:59", points: 100,
-          description: "Chapters 7 and 8. Take a claim people in your field " +
-            "repeat as settled and test it properly, then fit a regression " +
-            "relating your outcome to something you can measure and report how " +
-            "much variation it actually explains.",
-          files: [
-            { label: "Full brief (all three projects)", path: "files/assignments/prob-stats/ps361-group-projects.pdf" },
+            { label: "Project brief (3 pp)", path: "files/assignments/prob-stats/ps361-poster-project.pdf" },
           ],
         },
       ],
