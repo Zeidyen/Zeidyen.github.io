@@ -742,7 +742,7 @@ window.SITE = {
             "came from, the description, the figure, the interval, the claim, the " +
             "model, and what your data cannot support. Twelve minutes of talk and " +
             "five of questions, both assessed. Every member answers at least one " +
-            "question. Dates will be announced in class.",
+            "question.",
           files: [
             { label: "Project brief (3 pp)", path: "files/assignments/stat-thinking/sts-final-project.pdf" },
           ],
