@@ -179,6 +179,8 @@
       ? active.map(courseCard).join("")
       : emptyBox("No courses listed yet.");
 
+    drawDeadlines();
+
     drawAnnouncements(S.announcements || []);
     // Announcements may also come from the lecturer's spreadsheet; if that feed
     // answers, it replaces this list. If it does not, the page keeps what it has.
@@ -266,13 +268,18 @@
     }
     if (field !== "" || row.length) { row.push(field); rows.push(row); }
     return rows;
+  }
 
-    // every open deadline across every course, soonest first
+  /* ------------------------------------------------------------ deadlines
+     Every open deadline across every course, soonest first. This used to sit
+     at the end of parseCsv, after its return, so it never ran. */
+
+  function drawDeadlines() {
     var due = [];
     (S.courses || []).forEach(function (c) {
       (c.assignments || []).forEach(function (a) {
-        var s = assignmentStatus(a);
-        if (!s.past && s.date) due.push({ c: c, a: a, d: s.date });
+        var st = assignmentStatus(a);
+        if (!st.past && st.date) due.push({ c: c, a: a, d: st.date });
       });
     });
     due.sort(function (x, y) { return x.d - y.d; });
