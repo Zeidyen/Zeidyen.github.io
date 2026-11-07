@@ -338,7 +338,7 @@ window.SITE = {
         },
         {
           id: "A2", title: "Probability and random variables",
-          due: "2026-11-10", dueTime: "23:59",
+          due: "2026-11-11", dueTime: "23:59",
           description: "Four questions on Chapters 2 and 3: counting, Bayes\u2019 rule, " +
             "a discrete mass function and a continuous density. Handwritten, at most " +
             "two sides. Every number in it depends on the last digit of your index " +
