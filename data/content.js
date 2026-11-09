@@ -637,7 +637,7 @@ window.SITE = {
                    "Observational data against experiments",
                    "Selection bias, non-response and missing data",
                    "Reading a data dictionary before trusting a dataset"],
-          files: [{ label: "Notes (11 pp)", path: "files/lectures/stat-thinking/sts-week3-where-the-data-came-from.pdf" }],
+          files: [{ label: "Notes (12 pp)", path: "files/lectures/stat-thinking/sts-week3-where-the-data-came-from.pdf" }],
         },
         {
           week: 4, date: "", title: "Describing one variable honestly",
