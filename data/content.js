@@ -362,6 +362,12 @@ window.SITE = {
           note:  "All eight chapters in one file, 131 pages, 5.8 MB. The chapter " +
                  "files above are smaller if you are on mobile data.",
           path:  "files/lectures/prob-stats/ps361-full-lecture-notes.pdf" },
+        { title: "Standard normal (z) table",
+          note:  "Two pages, z from -3.99 to 3.99 in steps of 0.01, five decimal " +
+                 "places. Values are the area to the LEFT of z. This is the same " +
+                 "table you are given in the examination, so practise with it rather " +
+                 "than with a calculator function.",
+          path:  "files/resources/tables/standard-normal-table.pdf" },
         { title: "Past examination questions",
           note:  "End-of-semester papers from 2023 to 2026, newest first. Question " +
                  "papers only, no answers. In 2026 the class sat two papers, one " +
@@ -554,6 +560,12 @@ window.SITE = {
                  "the usual problem of being signed in to a personal Gmail instead of " +
                  "your university account.",
           path:  "files/resources/attendance/attendance-student-guide.pdf" },
+        { title: "Standard normal (z) table",
+          note:  "Two pages, z from -3.99 to 3.99 in steps of 0.01, five decimal " +
+                 "places. Values are the area to the LEFT of z. This is the same " +
+                 "table you are given in the examination, so practise with it rather " +
+                 "than with a calculator function.",
+          path:  "files/resources/tables/standard-normal-table.pdf" },
       ],
       /* Coursework projects. Same fields as assignments. */
       projects: [
@@ -768,6 +780,12 @@ window.SITE = {
                  "the usual problem of being signed in to a personal Gmail instead of " +
                  "your university account.",
           path:  "files/resources/attendance/attendance-student-guide.pdf" },
+        { title: "Standard normal (z) table",
+          note:  "Two pages, z from -3.99 to 3.99 in steps of 0.01, five decimal " +
+                 "places. Values are the area to the LEFT of z. This is the same " +
+                 "table you are given in the examination, so practise with it rather " +
+                 "than with a calculator function.",
+          path:  "files/resources/tables/standard-normal-table.pdf" },
         { title: "OpenIntro Statistics",
           note:  "Free textbook under a Creative Commons licence, and the closest " +
                  "match to this course. Download it in week one.",
