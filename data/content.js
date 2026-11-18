@@ -515,7 +515,6 @@ window.SITE = {
                    "The moment generating function, and recovering E(X^r) from it",
                    "Mean, variance and MGF of every Week 6 distribution, derived"],
           files: [{ label: "Notes (8 pp)", path: "files/lectures/prob-theory/mf281-week7-expectation-and-moments.pdf" }],
-          files: [],
         },
         {
           week: 8, date: "", title: "Several discrete random variables",
