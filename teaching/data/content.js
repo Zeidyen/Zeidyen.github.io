@@ -353,22 +353,23 @@ window.SITE = {
       ],
 
       resources: [
-        { title: "Examination eligibility list",
-          note:  "Who may sit the end-of-semester examination: every student with at " +
+        { title: "Quiz eligibility list",
+          note:  "Who may write the mid-semester quiz on Wednesday 25 or Friday 27 " +
+                 "November 2026: every student with at " +
                  "least one recorded class session up to 23 November 2026. Index " +
                  "numbers only, no names. Open the file for your own programme and " +
                  "find your number. If it is not there, see me at the next lecture " +
-                 "and bring whatever evidence you have; do not leave it until the " +
-                 "examination.",
+                 "and bring whatever evidence you have; do not leave it until the day " +
+                 "of the quiz.",
           files: [
-            { label: "Civil Engineering, CV (93)",                      path: "files/resources/prob-stats/eligibility/ps361-exam-eligibility-cv.pdf" },
-            { label: "Geomatic Engineering, GM (81)",                   path: "files/resources/prob-stats/eligibility/ps361-exam-eligibility-gm.pdf" },
-            { label: "Geological Engineering, GL (122)",                path: "files/resources/prob-stats/eligibility/ps361-exam-eligibility-gl.pdf" },
-            { label: "Environmental and Safety Engineering, ES (81)",   path: "files/resources/prob-stats/eligibility/ps361-exam-eligibility-es.pdf" },
-            { label: "Electrical and Electronic Engineering, EL (136)", path: "files/resources/prob-stats/eligibility/ps361-exam-eligibility-el.pdf" },
-            { label: "Mechanical Engineering, MC (127)",                path: "files/resources/prob-stats/eligibility/ps361-exam-eligibility-mc.pdf" },
-            { label: "Computer Science and Engineering, CE (118)",      path: "files/resources/prob-stats/eligibility/ps361-exam-eligibility-ce.pdf" },
-            { label: "All seven programmes in one file (758)",          path: "files/resources/prob-stats/eligibility/ps361-exam-eligibility-all-programmes.pdf" },
+            { label: "Civil Engineering, CV (93)",                      path: "files/resources/prob-stats/eligibility/ps361-quiz-eligibility-cv.pdf" },
+            { label: "Geomatic Engineering, GM (81)",                   path: "files/resources/prob-stats/eligibility/ps361-quiz-eligibility-gm.pdf" },
+            { label: "Geological Engineering, GL (122)",                path: "files/resources/prob-stats/eligibility/ps361-quiz-eligibility-gl.pdf" },
+            { label: "Environmental and Safety Engineering, ES (81)",   path: "files/resources/prob-stats/eligibility/ps361-quiz-eligibility-es.pdf" },
+            { label: "Electrical and Electronic Engineering, EL (136)", path: "files/resources/prob-stats/eligibility/ps361-quiz-eligibility-el.pdf" },
+            { label: "Mechanical Engineering, MC (127)",                path: "files/resources/prob-stats/eligibility/ps361-quiz-eligibility-mc.pdf" },
+            { label: "Computer Science and Engineering, CE (118)",      path: "files/resources/prob-stats/eligibility/ps361-quiz-eligibility-ce.pdf" },
+            { label: "All seven programmes in one file (758)",          path: "files/resources/prob-stats/eligibility/ps361-quiz-eligibility-all-programmes.pdf" },
           ] },
         { title: "How to sign attendance",
           note:  "One page: the five steps, what the screen looks like, and how to fix " +
@@ -576,13 +577,13 @@ window.SITE = {
       ],
       assignments: [],
       resources: [
-        { title: "Examination eligibility list",
-          note:  "Who may sit the end-of-semester examination: every student with at " +
+        { title: "Quiz eligibility list",
+          note:  "Who may write the quiz: every student with at " +
                  "least one recorded class session up to 23 November 2026. Index " +
                  "numbers only, no names. If your number is not there, see me at the " +
                  "next lecture and bring whatever evidence you have; do not leave it " +
-                 "until the examination.",
-          path:  "files/resources/prob-theory/mf281-exam-eligibility.pdf" },
+                 "until the day of the quiz.",
+          path:  "files/resources/prob-theory/mf281-quiz-eligibility.pdf" },
         { title: "How to sign attendance",
           note:  "One page: the five steps, what the screen looks like, and how to fix " +
                  "the usual problem of being signed in to a personal Gmail instead of " +
@@ -803,13 +804,13 @@ window.SITE = {
         },
       ],
       resources: [
-        { title: "Examination eligibility list",
-          note:  "Who may sit the end-of-semester examination: every student with at " +
+        { title: "Quiz eligibility list",
+          note:  "Who may write the quiz: every student with at " +
                  "least one recorded class session up to 23 November 2026. Index " +
                  "numbers only, no names. If your number is not there, see me at the " +
                  "next lecture and bring whatever evidence you have; do not leave it " +
-                 "until the examination.",
-          path:  "files/resources/stat-thinking-ds/stat-thinking-ds-exam-eligibility.pdf" },
+                 "until the day of the quiz.",
+          path:  "files/resources/stat-thinking-ds/stat-thinking-ds-quiz-eligibility.pdf" },
         { title: "How to sign attendance",
           note:  "One page: the five steps, what the screen looks like, and how to fix " +
                  "the usual problem of being signed in to a personal Gmail instead of " +
