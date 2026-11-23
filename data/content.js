@@ -354,7 +354,7 @@ window.SITE = {
 
       resources: [
         { title: "Quiz eligibility list",
-          note:  "Who may write the mid-semester quiz on Wednesday 25 or Friday 27 " +
+          note:  "Who may sit for the mid-semester quiz on Wednesday 25 or Friday 27 " +
                  "November 2026: every student with at " +
                  "least one recorded class session up to 23 November 2026. Index " +
                  "numbers only, no names. Open the file for your own programme and " +
@@ -578,7 +578,7 @@ window.SITE = {
       assignments: [],
       resources: [
         { title: "Quiz eligibility list",
-          note:  "Who may write the quiz: every student with at " +
+          note:  "Who may sit for the quiz: every student with at " +
                  "least one recorded class session up to 23 November 2026. Index " +
                  "numbers only, no names. If your number is not there, see me at the " +
                  "next lecture and bring whatever evidence you have; do not leave it " +
@@ -805,7 +805,7 @@ window.SITE = {
       ],
       resources: [
         { title: "Quiz eligibility list",
-          note:  "Who may write the quiz: every student with at " +
+          note:  "Who may sit for the quiz: every student with at " +
                  "least one recorded class session up to 23 November 2026. Index " +
                  "numbers only, no names. If your number is not there, see me at the " +
                  "next lecture and bring whatever evidence you have; do not leave it " +
